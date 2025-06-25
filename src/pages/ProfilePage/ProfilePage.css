@@ -8,7 +8,7 @@
 
 .page-title {
   margin-bottom: 3.2rem;
-  color: #2D3436;
+  color: var(--text-primary);
 }
 
 .profile-content {
@@ -18,7 +18,7 @@
 }
 
 .profile-section {
-  background: white;
+  background: var(--background-primary);
   border-radius: 8px;
   padding: 24px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -26,13 +26,13 @@
 
 .section-title {
   margin: 0 0 20px 0;
-  color: #2D3436;
+  color: var(--text-primary);
   font-size: 20px;
   font-weight: 600;
 }
 
 .section-placeholder {
-  color: #636E72;
+  color: var(--text-secondary);
   font-style: italic;
   margin: 0;
 }
@@ -56,14 +56,14 @@
 
 .setting-label h3 {
   margin: 0 0 8px 0;
-  color: #2D3436;
+  color: var(--text-primary);
   font-size: 16px;
   font-weight: 500;
 }
 
 .setting-description {
   margin: 0;
-  color: #636E72;
+  color: var(--text-secondary);
   font-size: 14px;
   line-height: 1.4;
 }

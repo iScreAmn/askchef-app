@@ -4,11 +4,11 @@
   align-items: center;
   justify-content: center;
   padding: 2.4rem;
-  background: #F8F9FA;
+  background: var(--background-primary);
 }
 
 .auth-card {
-  background: #FFFFFF;
+  background: var(--background-tertiary);
   padding: 4.8rem;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -19,7 +19,7 @@
 .auth-title {
   text-align: center;
   margin-bottom: 3.2rem;
-  color: #2D3436;
+  color: var(--text-primary);
 }
 
 .tab-buttons {
@@ -71,7 +71,7 @@
 
 .form-label {
   font-weight: 500;
-  color: #2D3436;
+  color: var(--text-primary);
 }
 
 .form-input {

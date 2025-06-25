@@ -1,7 +1,7 @@
 .header-container {
-  background: #FFFFFF;
-  border-bottom: 1px solid #DDD;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: var(--header-background);
+  border-bottom: 1px solid var(--header-border);
+  box-shadow: var(--shadow-small);
   position: sticky;
   top: 0;
   z-index: 1020;
@@ -26,12 +26,12 @@
 .logo {
   font-size: 2.4rem;
   font-weight: 700;
-  color: #FF6B35;
+  color: var(--primary-color);
   text-decoration: none;
 }
 
 .logo:hover {
-  color: #E55A2B;
+  color: var(--primary-hover);
 }
 
 .nav {
@@ -47,7 +47,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #FFFFFF;
+    background: var(--header-background);
     flex-direction: column;
     justify-content: flex-start;
     padding: 3.2rem;
@@ -79,7 +79,7 @@
 }
 
 .nav-link {
-  color: #2D3436;
+  color: var(--header-text);
   text-decoration: none;
   font-weight: 500;
   padding: 0.8rem 1.6rem;
@@ -88,13 +88,13 @@
 }
 
 .nav-link--active {
-  color: #FF6B35;
-  background: #F8F9FA;
+  color: var(--primary-color);
+  background: var(--background-secondary);
 }
 
 .nav-link:hover {
-  color: #FF6B35;
-  background: #F8F9FA;
+  color: var(--primary-color);
+  background: var(--background-hover);
 }
 
 @media (max-width: 1024px) {
@@ -125,14 +125,14 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  color: #636E72;
+  color: var(--text-secondary);
 }
 
 .mobile-menu-button {
   display: none;
   background: none;
   border: none;
-  color: #2D3436;
+  color: var(--header-text);
   font-size: 2.4rem;
   cursor: pointer;
 }

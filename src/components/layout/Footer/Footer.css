@@ -1,6 +1,6 @@
 .footer-container {
-  background: #F8F9FA;
-  border-top: 1px solid #DDD;
+  background: var(--footer-background);
+  border-top: 1px solid var(--footer-border);
   padding: 2.4rem 0;
   margin-top: auto;
 }
@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #636E72;
+  color: var(--footer-text);
 }
 
 .footer-left {

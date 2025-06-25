@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import LanguageSwitcher from '../../components/ui/LanguageSwitcher/LanguageSwitcher'
+import ThemeSwitcher from '../../components/ui/ThemeSwitcher/ThemeSwitcher'
 import './ProfilePage.css'
 
 const ProfilePage = () => {
@@ -24,6 +25,8 @@ const ProfilePage = () => {
               <LanguageSwitcher variant="buttons" />
             </div>
           </div>
+          
+          <ThemeSwitcher />
         </div>
         
         <div className="profile-section">

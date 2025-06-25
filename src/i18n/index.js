@@ -71,6 +71,11 @@ i18n
             "settings": "Настройки",
             "language": "Язык интерфейса",
             "languageDescription": "Выберите язык для отображения интерфейса приложения",
+            "theme": "Тема оформления",
+            "themeDescription": "Выберите светлую или темную тему интерфейса",
+            "lightTheme": "Светлая тема",
+            "darkTheme": "Темная тема",
+            "toggleTheme": "Переключить тему",
             "accountInfo": "Информация об аккаунте",
             "inDevelopment": "Эта секция находится в разработке..."
           },
@@ -156,6 +161,11 @@ i18n
             "settings": "Settings",
             "language": "Interface Language",
             "languageDescription": "Choose the language for the application interface",
+            "theme": "Theme",
+            "themeDescription": "Choose light or dark theme for the interface",
+            "lightTheme": "Light Theme",
+            "darkTheme": "Dark Theme",
+            "toggleTheme": "Toggle theme",
             "accountInfo": "Account Information",
             "inDevelopment": "This section is under development..."
           },
