@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage/HomePage'
 import AuthPage from './pages/AuthPage/AuthPage'
 import MenuPlanningPage from './pages/MenuPlanningPage/MenuPlanningPage'
 import RecipesPage from './pages/RecipesPage/RecipesPage'
+import RecipeDetailPage from './pages/RecipeDetailPage/RecipeDetailPage'
 import ShoppingListPage from './pages/ShoppingListPage/ShoppingListPage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="auth" element={<AuthPage />} />
         <Route path="menu" element={<MenuPlanningPage />} />
         <Route path="recipes" element={<RecipesPage />} />
+        <Route path="recipes/:id" element={<RecipeDetailPage />} />
         <Route path="shopping" element={<ShoppingListPage />} />
         <Route path="profile" element={<ProfilePage />} />
       </Route>

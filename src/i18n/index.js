@@ -48,11 +48,105 @@ i18n
           },
           "recipes": {
             "searchRecipes": "Поиск рецептов",
+            "allCategories": "Все категории",
+            "breakfast": "Завтрак",
+            "lunch": "Обед", 
+            "dinner": "Ужин",
             "ingredients": "Ингредиенты",
             "instructions": "Инструкции",
             "cookingTime": "Время приготовления",
             "servings": "Порций",
-            "difficulty": "Сложность"
+            "difficulty": "Сложность",
+            "difficultyEasy": "Легко",
+            "difficultyMedium": "Средне",
+            "difficultyHard": "Сложно",
+            "minutes": "мин",
+            "tags": "Теги",
+            "addToFavorites": "В избранное",
+            "addToMenu": "Добавить в меню",
+            "notFound": "Рецепт не найден",
+            "noRecipes": "В этой категории пока нет рецептов",
+            "backToRecipes": "Назад к рецептам"
+          },
+          "units": {
+            "г": "г",
+            "шт": "шт", 
+            "ст.л.": "ст.л.",
+            "ч.л.": "ч.л.",
+            "мл": "мл",
+            "л": "л",
+            "кг": "кг",
+            "зубчика": "зубчика",
+            "по вкусу": "по вкусу",
+            "бутылка": "бутылка"
+          },
+          "recipeData": {
+            "1": {
+              "title": "Спагетти Болоньезе",
+              "description": "Классическая итальянская паста с мясным соусом",
+              "ingredients": [
+                "Спагетти",
+                "Фарш говяжий", 
+                "Лук репчатый",
+                "Морковь",
+                "Томаты в собственном соку",
+                "Чеснок",
+                "Масло оливковое",
+                "Соль",
+                "Перец черный"
+              ],
+              "instructions": [
+                "Отварить спагетти согласно инструкции на упаковке",
+                "Обжарить лук и морковь на оливковом масле",
+                "Добавить фарш и обжарить до готовности",
+                "Добавить томаты и тушить 20 минут",
+                "Смешать с готовыми спагетти и подавать"
+              ],
+              "tags": ["итальянская кухня", "паста", "мясо"]
+            },
+            "2": {
+              "title": "Греческий салат",
+              "description": "Свежий салат с овощами и сыром фета",
+              "ingredients": [
+                "Помидоры",
+                "Огурцы",
+                "Перец болгарский",
+                "Лук красный",
+                "Сыр фета",
+                "Оливки",
+                "Масло оливковое",
+                "Уксус винный",
+                "Орегано"
+              ],
+              "instructions": [
+                "Нарезать овощи крупными кусками",
+                "Добавить сыр фета и оливки",
+                "Заправить маслом, уксусом и орегано",
+                "Перемешать и подавать"
+              ],
+              "tags": ["салат", "греческая кухня", "вегетарианское"]
+            },
+            "3": {
+              "title": "Омлет с грибами",
+              "description": "Нежный омлет с шампиньонами на завтрак",
+              "ingredients": [
+                "Яйца",
+                "Молоко",
+                "Шампиньоны",
+                "Масло сливочное",
+                "Соль",
+                "Перец черный",
+                "Зелень"
+              ],
+              "instructions": [
+                "Обжарить нарезанные грибы на сливочном масле",
+                "Взбить яйца с молоком, солью и перцем",
+                "Вылить яичную смесь на сковороду с грибами",
+                "Готовить на медленном огне до готовности",
+                "Подавать с зеленью"
+              ],
+              "tags": ["завтрак", "яйца", "грибы"]
+            }
           },
           "common": {
             "save": "Сохранить",
@@ -60,6 +154,7 @@ i18n
             "delete": "Удалить",
             "edit": "Редактировать",
             "add": "Добавить",
+            "back": "Назад",
             "loading": "Загрузка...",
             "error": "Ошибка",
             "success": "Успешно"
@@ -138,11 +233,105 @@ i18n
           },
           "recipes": {
             "searchRecipes": "Search Recipes",
+            "allCategories": "All Categories",
+            "breakfast": "Breakfast",
+            "lunch": "Lunch",
+            "dinner": "Dinner", 
             "ingredients": "Ingredients",
             "instructions": "Instructions",
             "cookingTime": "Cooking Time",
             "servings": "Servings",
-            "difficulty": "Difficulty"
+            "difficulty": "Difficulty",
+            "difficultyEasy": "Easy",
+            "difficultyMedium": "Medium",
+            "difficultyHard": "Hard",
+            "minutes": "min",
+            "tags": "Tags",
+            "addToFavorites": "Add to Favorites",
+            "addToMenu": "Add to Menu",
+            "notFound": "Recipe not found",
+            "noRecipes": "No recipes in this category yet",
+            "backToRecipes": "Back to Recipes"
+          },
+          "units": {
+            "г": "g",
+            "шт": "pcs",
+            "ст.л.": "tbsp",
+            "ч.л.": "tsp", 
+            "мл": "ml",
+            "л": "l",
+            "кг": "kg",
+            "зубчика": "cloves",
+            "по вкусу": "to taste",
+            "бутылка": "bottle"
+          },
+          "recipeData": {
+            "1": {
+              "title": "Spaghetti Bolognese",
+              "description": "Classic Italian pasta with meat sauce",
+              "ingredients": [
+                "Spaghetti",
+                "Ground beef",
+                "Onion",
+                "Carrot", 
+                "Canned tomatoes",
+                "Garlic",
+                "Olive oil",
+                "Salt",
+                "Black pepper"
+              ],
+              "instructions": [
+                "Cook spaghetti according to package instructions",
+                "Sauté onion and carrot in olive oil",
+                "Add ground beef and cook until done",
+                "Add tomatoes and simmer for 20 minutes",
+                "Mix with cooked spaghetti and serve"
+              ],
+              "tags": ["italian cuisine", "pasta", "meat"]
+            },
+            "2": {
+              "title": "Greek Salad",
+              "description": "Fresh salad with vegetables and feta cheese",
+              "ingredients": [
+                "Tomatoes",
+                "Cucumbers",
+                "Bell pepper",
+                "Red onion",
+                "Feta cheese",
+                "Olives",
+                "Olive oil",
+                "Wine vinegar",
+                "Oregano"
+              ],
+              "instructions": [
+                "Cut vegetables into large pieces",
+                "Add feta cheese and olives",
+                "Dress with oil, vinegar and oregano",
+                "Mix and serve"
+              ],
+              "tags": ["salad", "greek cuisine", "vegetarian"]
+            },
+            "3": {
+              "title": "Mushroom Omelet",
+              "description": "Tender omelet with mushrooms for breakfast",
+              "ingredients": [
+                "Eggs",
+                "Milk",
+                "Mushrooms",
+                "Butter",
+                "Salt",
+                "Black pepper",
+                "Fresh herbs"
+              ],
+              "instructions": [
+                "Sauté sliced mushrooms in butter",
+                "Beat eggs with milk, salt and pepper",
+                "Pour egg mixture into pan with mushrooms",
+                "Cook on low heat until done",
+                "Serve with fresh herbs"
+              ],
+              "tags": ["breakfast", "eggs", "mushrooms"]
+            }
           },
           "common": {
             "save": "Save",
@@ -150,6 +339,7 @@ i18n
             "delete": "Delete",
             "edit": "Edit",
             "add": "Add",
+            "back": "Back",
             "loading": "Loading...",
             "error": "Error",
             "success": "Success"

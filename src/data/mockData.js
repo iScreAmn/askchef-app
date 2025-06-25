@@ -1,11 +1,12 @@
 // Mock данные для разработки
+import { spaghettiBolognese, greekSalad, mushroomOmelet } from '../assets/images'
 
 export const mockRecipes = [
   {
     id: 1,
     title: 'Спагетти Болоньезе',
     description: 'Классическая итальянская паста с мясным соусом',
-    image: '/images/recipes/spaghetti.jpg',
+    image: spaghettiBolognese,
     cookingTime: 45,
     servings: 4,
     difficulty: 'medium',
@@ -34,7 +35,7 @@ export const mockRecipes = [
     id: 2,
     title: 'Греческий салат',
     description: 'Свежий салат с овощами и сыром фета',
-    image: '/images/recipes/greek-salad.jpg',
+    image: greekSalad,
     cookingTime: 15,
     servings: 2,
     difficulty: 'easy',
@@ -62,7 +63,7 @@ export const mockRecipes = [
     id: 3,
     title: 'Омлет с грибами',
     description: 'Нежный омлет с шампиньонами на завтрак',
-    image: '/images/recipes/mushroom-omelet.jpg',
+    image: mushroomOmelet,
     cookingTime: 20,
     servings: 2,
     difficulty: 'easy',
