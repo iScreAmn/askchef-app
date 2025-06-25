@@ -1,0 +1,133 @@
+/* Light Theme (default) */
+:root {
+  /* Primary colors */
+  --primary-color: #ff6b35;
+  --primary-hover: #e55a2b;
+  --primary-light: rgba(255, 107, 53, 0.1);
+  --secondary-color: #4ecdc4;
+  --secondary-hover: #3bb5ad;
+
+  /* Background colors */
+  --background-primary: #ffffff;
+  --background-secondary: #f8f9fa;
+  --background-tertiary: #e9ecef;
+  --background-hover: #f5f5f5;
+  --background-card: #ffffff;
+
+  /* Text colors */
+  --text-primary: #2d3436;
+  --text-secondary: #636e72;
+  --text-tertiary: #a4a4a4;
+  --text-inverse: #ffffff;
+
+  /* Border colors */
+  --border-color: #e0e0e0;
+  --border-light: #f0f0f0;
+  --border-dark: #d0d0d0;
+
+  /* Shadow */
+  --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-large: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+  /* Header */
+  --header-background: #ffffff;
+  --header-text: #2d3436;
+  --header-border: #e0e0e0;
+
+  /* Footer */
+  --footer-background: #f8f9fa;
+  --footer-text: #636e72;
+  --footer-border: #ddd;
+
+  /* Form elements */
+  --input-background: #ffffff;
+  --input-border: #e0e0e0;
+  --input-focus: #ff6b35;
+  --input-text: #2d3436;
+  --input-placeholder: #a4a4a4;
+
+  /* Status colors */
+  --success-color: #00b894;
+  --warning-color: #fdcb6e;
+  --error-color: #e17055;
+  --info-color: #74b9ff;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  /* Primary colors */
+  --primary-color: #ff6b35;
+  --primary-hover: #ff7f4d;
+  --primary-light: rgba(255, 107, 53, 0.2);
+  --secondary-color: #4ecdc4;
+  --secondary-hover: #5ed3ca;
+
+  /* Background colors */
+  --background-primary: #1a1a1a;
+  --background-secondary: #2d2d2d;
+  --background-tertiary: #3a3a3a;
+  --background-hover: #404040;
+  --background-card: #2d2d2d;
+
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-tertiary: #808080;
+  --text-inverse: #1a1a1a;
+
+  /* Border colors */
+  --border-color: #404040;
+  --border-light: #4a4a4a;
+  --border-dark: #2a2a2a;
+
+  /* Shadow */
+  --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-large: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+  /* Header */
+  --header-background: #2d2d2d;
+  --header-text: #ffffff;
+  --header-border: #404040;
+
+  /* Footer */
+  --footer-background: #2d2d2d;
+  --footer-text: #b0b0b0;
+  --footer-border: #404040;
+
+  /* Form elements */
+  --input-background: #3a3a3a;
+  --input-border: #404040;
+  --input-focus: #ff6b35;
+  --input-text: #ffffff;
+  --input-placeholder: #808080;
+
+  /* Status colors */
+  --success-color: #00b894;
+  --warning-color: #fdcb6e;
+  --error-color: #e17055;
+  --info-color: #74b9ff;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
+}
+
+/* Disable transitions during theme initialization */
+.theme-transition-disabled,
+.theme-transition-disabled * {
+  transition: none !important;
+}
+
+/* More specific selector for better performance */
+html:not(.theme-transition-disabled) * {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
+} 

@@ -17,8 +17,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem;
   line-height: 1.6;
-  color: #2D3436;
-  background-color: #FFFFFF;
+  color: var(--text-primary);
+  background-color: var(--background-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -35,7 +35,7 @@ a {
 }
 
 a:hover {
-  color: #FF6B35;
+  color: var(--primary-color);
 }
 
 button {
@@ -49,14 +49,20 @@ button {
 input, textarea {
   font-family: inherit;
   outline: none;
-  border: 1px solid #DDD;
+  border: 1px solid var(--input-border);
   border-radius: 8px;
+  background-color: var(--input-background);
+  color: var(--input-text);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input:focus, textarea:focus {
-  border-color: #FF6B35;
-  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--input-placeholder);
 }
 
 /* Скроллбар */
@@ -65,16 +71,16 @@ input:focus, textarea:focus {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F8F9FA;
+  background: var(--background-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #DDD;
+  background: var(--border-color);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #636E72;
+  background: var(--text-secondary);
 }
 
 /* Анимации */
