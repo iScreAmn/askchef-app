@@ -1,0 +1,104 @@
+.auth-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.4rem;
+  background: #F8F9FA;
+}
+
+.auth-card {
+  background: #FFFFFF;
+  padding: 4.8rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-title {
+  text-align: center;
+  margin-bottom: 3.2rem;
+  color: #2D3436;
+}
+
+.tab-buttons {
+  display: flex;
+  margin-bottom: 3.2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #DDD;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 1.6rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.tab-button--active {
+  background: #FF6B35;
+  color: #FFFFFF;
+}
+
+.tab-button--inactive {
+  background: #F8F9FA;
+  color: #2D3436;
+}
+
+.tab-button--active:hover {
+  background: #E55A2B;
+}
+
+.tab-button--inactive:hover {
+  background: #F1F3F4;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #2D3436;
+}
+
+.form-input {
+  padding: 1.6rem;
+  border: 1px solid #DDD;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  border-color: #FF6B35;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+  outline: none;
+}
+
+.form-input--error {
+  border-color: #E17055;
+}
+
+.form-input--error:focus {
+  border-color: #E17055;
+  box-shadow: 0 0 0 3px rgba(225, 112, 85, 0.2);
+}
+
+.error-message {
+  color: #E17055;
+  font-size: 1.4rem;
+} 

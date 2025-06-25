@@ -1,0 +1,12 @@
+.page-container {
+  flex: 1;
+  padding: 3.2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.page-title {
+  margin-bottom: 3.2rem;
+  color: #2D3436;
+} 
