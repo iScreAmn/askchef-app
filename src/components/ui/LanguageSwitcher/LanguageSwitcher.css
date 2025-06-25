@@ -1,0 +1,182 @@
+.language-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+.language-switcher__trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-color, #333);
+  transition: all 0.2s ease;
+}
+
+.language-switcher__trigger:hover {
+  background: var(--background-hover, #f5f5f5);
+  border-color: var(--primary-color, #ff6b35);
+}
+
+
+
+.language-switcher__name {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.language-switcher__arrow {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.language-switcher__arrow--open {
+  transform: rotate(180deg);
+}
+
+.language-switcher__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: white;
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Variant for footer - opens upward and minimal */
+.language-switcher--footer {
+  position: relative;
+}
+
+.language-switcher--footer .language-switcher__trigger {
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: #636E72;
+  border-radius: 4px;
+  min-width: auto;
+}
+
+.language-switcher--footer .language-switcher__trigger:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.language-switcher--footer .language-switcher__name {
+  font-size: 13px;
+}
+
+.language-switcher--footer .language-switcher__arrow {
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+.language-switcher--footer .language-switcher__arrow--open {
+  transform: rotate(180deg);
+}
+
+.language-switcher--footer .language-switcher__dropdown {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 4px;
+  min-width: 120px;
+}
+
+.language-switcher__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-color, #333);
+  transition: background-color 0.2s ease;
+  text-align: center;
+}
+
+.language-switcher__option:hover {
+  background: var(--background-hover, #f5f5f5);
+}
+
+.language-switcher__option--active {
+  background: var(--primary-light, rgba(255, 107, 53, 0.1));
+  color: var(--primary-color, #ff6b35);
+}
+
+/* Variant: buttons */
+.language-switcher--buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.language-switcher__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-color, #666);
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.language-switcher__button:hover {
+  background: var(--background-hover, #f5f5f5);
+  border-color: var(--primary-color, #ff6b35);
+  color: var(--text-color, #666);
+}
+
+.language-switcher__button--active {
+  background: var(--primary-color, #ff6b35);
+  border-color: var(--primary-color, #ff6b35);
+  color: #fff;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .language-switcher__trigger {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+  
+  .language-switcher__name {
+    font-size: 13px;
+  }
+  
+  .language-switcher__dropdown {
+    min-width: 120px;
+  }
+  
+  .language-switcher__button {
+    padding: 6px 8px;
+    font-size: 12px;
+    min-width: 70px;
+  }
+  
+  /* Для футера на мобильных - можно сделать еще компактнее */
+  .language-switcher--footer .language-switcher__name {
+    font-size: 12px;
+  }
+  
+  .language-switcher--footer .language-switcher__trigger {
+    padding: 4px 6px;
+  }
+} 
