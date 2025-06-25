@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-left">
           <p className="copyright">
-            © {currentYear} AskChef. {t('footer.allRightsReserved', 'Все права защищены')}.
+            © {currentYear} AskChef. {t('footer.allRightsReserved')}.
           </p>
         </div>
         <div className="footer-right">

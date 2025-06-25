@@ -12,13 +12,13 @@ const ProfilePage = () => {
       
       <div className="profile-content">
         <div className="profile-section">
-          <h2 className="section-title">{t('profile.settings', 'Настройки')}</h2>
+          <h2 className="section-title">{t('profile.settings')}</h2>
           
           <div className="setting-item">
             <div className="setting-label">
-              <h3>{t('profile.language', 'Язык интерфейса')}</h3>
+              <h3>{t('profile.language')}</h3>
               <p className="setting-description">
-                {t('profile.languageDescription', 'Выберите язык для отображения интерфейса приложения')}
+                {t('profile.languageDescription')}
               </p>
             </div>
             <div className="setting-control">
@@ -30,9 +30,9 @@ const ProfilePage = () => {
         </div>
         
         <div className="profile-section">
-          <h2 className="section-title">{t('profile.accountInfo', 'Информация об аккаунте')}</h2>
+          <h2 className="section-title">{t('profile.accountInfo')}</h2>
           <p className="section-placeholder">
-            {t('profile.inDevelopment', 'Эта секция находится в разработке...')}
+            {t('profile.inDevelopment')}
           </p>
         </div>
       </div>

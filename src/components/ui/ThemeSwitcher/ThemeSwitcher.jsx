@@ -13,10 +13,10 @@ const ThemeSwitcher = () => {
       <div className="theme-switcher__content">
         <div className="theme-switcher__info">
           <h3 className="theme-switcher__title">
-            {t('profile.theme', 'Тема оформления')}
+            {t('profile.theme')}
           </h3>
           <p className="theme-switcher__description">
-            {t('profile.themeDescription', 'Выберите светлую или темную тему интерфейса')}
+            {t('profile.themeDescription')}
           </p>
         </div>
         
@@ -24,7 +24,7 @@ const ThemeSwitcher = () => {
           <button
             className={`theme-toggle ${isDark ? 'theme-toggle--dark' : 'theme-toggle--light'}`}
             onClick={toggleTheme}
-            aria-label={t('profile.toggleTheme', 'Переключить тему')}
+            aria-label={t('profile.toggleTheme')}
           >
             <div className="theme-toggle__track">
               <div className="theme-toggle__thumb">
@@ -35,8 +35,8 @@ const ThemeSwitcher = () => {
           
           <span className="theme-switcher__label">
             {isDark 
-              ? t('profile.darkTheme', 'Темная тема') 
-              : t('profile.lightTheme', 'Светлая тема')
+              ? t('profile.darkTheme') 
+              : t('profile.lightTheme')
             }
           </span>
         </div>
