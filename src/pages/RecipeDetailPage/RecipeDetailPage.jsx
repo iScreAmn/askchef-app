@@ -64,7 +64,7 @@ const RecipeDetailPage = () => {
           <Button 
             variant="ghost" 
             icon={<FiArrowLeft />}
-            onClick={() => navigate('/recipes')}
+            onClick={() => navigate(`/recipes?category=${recipe.category}`)}
             className="back-button"
           >
             {t('common.back')}

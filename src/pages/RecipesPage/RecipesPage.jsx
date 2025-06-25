@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { FiClock, FiUsers, FiTrendingUp } from 'react-icons/fi'
 import useRecipeTranslations from '../../hooks/useRecipeTranslations'
 import './RecipesPage.css'
@@ -8,8 +8,17 @@ import './RecipesPage.css'
 const RecipesPage = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const [selectedCategory, setSelectedCategory] = useState('all')
   const { getTranslatedRecipes } = useRecipeTranslations()
+
+  // Устанавливаем категорию из URL при загрузке компонента
+  useEffect(() => {
+    const categoryFromUrl = searchParams.get('category')
+    if (categoryFromUrl && ['breakfast', 'lunch', 'dinner'].includes(categoryFromUrl)) {
+      setSelectedCategory(categoryFromUrl)
+    }
+  }, [searchParams])
 
   const categories = [
     { id: 'all', name: t('recipes.allCategories'), icon: '🍽️' },
