@@ -28,10 +28,19 @@
   font-weight: 700;
   color: var(--primary-color);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
 .logo:hover {
   color: var(--primary-hover);
+}
+
+.logo-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .nav {

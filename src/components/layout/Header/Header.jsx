@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { FiMenu, FiX, FiUser, FiLogOut } from 'react-icons/fi'
 import { useAuthStore } from '../../../store/authStore'
+import { logo } from '../../../assets/images'
 import Button from '../../ui/Button/Button'
 import './Header.css'
 
@@ -33,7 +34,10 @@ const Header = () => {
   return (
     <header className="header-container">
       <div className="header-content">
-        <Link to="/" className="logo">AskChef</Link>
+        <Link to="/" className="logo">
+          <img src={logo} alt="AskChef" className="logo-image" />
+          AskChef
+        </Link>
 
         <nav className={`nav ${isMobileMenuOpen ? 'nav--open' : 'nav--closed'}`}>
           <div className="nav-links">
