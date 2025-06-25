@@ -295,4 +295,63 @@
   .stat-item:last-child {
     border-bottom: none;
   }
+}
+
+/* Recipe Tips */
+.recipe-tips {
+  margin-top: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--background-secondary);
+}
+
+.recipe-tips-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.recipe-tips-header:hover {
+  background: var(--background-hover);
+}
+
+.recipe-tips-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.recipe-tips-header svg {
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.recipe-tips-content {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  animation: slideDown 0.3s ease-out;
+}
+
+.recipe-tips-content p {
+  margin: 0;
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 } 

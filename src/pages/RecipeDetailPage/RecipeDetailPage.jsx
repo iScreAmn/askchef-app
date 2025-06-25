@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { FiClock, FiUsers, FiTrendingUp, FiArrowLeft, FiHeart } from 'react-icons/fi'
+import { FiClock, FiUsers, FiTrendingUp, FiArrowLeft, FiHeart, FiChevronDown, FiChevronUp } from 'react-icons/fi'
 import { mockRecipes } from '../../data/mockData'
 import useRecipeTranslations from '../../hooks/useRecipeTranslations'
 import Button from '../../components/ui/Button/Button'
@@ -11,6 +12,7 @@ const RecipeDetailPage = () => {
   const navigate = useNavigate()
   const { t } = useTranslation()
   const { getTranslatedRecipe } = useRecipeTranslations()
+  const [showTips, setShowTips] = useState(false)
   
   const originalRecipe = mockRecipes.find(r => r.id === parseInt(id))
   const recipe = originalRecipe ? getTranslatedRecipe(originalRecipe) : null
@@ -134,6 +136,26 @@ const RecipeDetailPage = () => {
                 </li>
               ))}
             </ul>
+            
+            {(recipe.id === 5 || recipe.id === 6) && (
+              <div className="recipe-tips">
+                <div 
+                  className="recipe-tips-header"
+                  onClick={() => setShowTips(!showTips)}
+                >
+                  <h3>{t('recipes.tips')}</h3>
+                  {showTips ? <FiChevronUp /> : <FiChevronDown />}
+                </div>
+                {showTips && (
+                  <div className="recipe-tips-content">
+                    <p>
+                      {recipe.id === 5 && t('recipes.kharcho.tips')}
+                      {recipe.id === 6 && t('recipes.braisedPork.tips')}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="recipe-instructions">
