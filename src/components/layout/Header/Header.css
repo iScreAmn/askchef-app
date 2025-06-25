@@ -1,0 +1,144 @@
+.header-container {
+  background: #FFFFFF;
+  border-bottom: 1px solid #DDD;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+@media (max-width: 1024px) {
+  .header-content {
+    padding: 0 0.8rem;
+  }
+}
+
+.logo {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #FF6B35;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: #E55A2B;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #FFFFFF;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 3.2rem;
+    transition: transform 0.3s ease;
+    z-index: 1040;
+  }
+
+  .nav--closed {
+    transform: translateX(100%);
+  }
+
+  .nav--open {
+    transform: translateX(0);
+  }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+@media (max-width: 1024px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 3.2rem;
+    width: 100%;
+  }
+}
+
+.nav-link {
+  color: #2D3436;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-link--active {
+  color: #FF6B35;
+  background: #F8F9FA;
+}
+
+.nav-link:hover {
+  color: #FF6B35;
+  background: #F8F9FA;
+}
+
+@media (max-width: 1024px) {
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 1.6rem;
+    font-size: 1.8rem;
+  }
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+@media (max-width: 1024px) {
+  .user-section {
+    flex-direction: column;
+    gap: 2.4rem;
+    width: 100%;
+    margin-top: 3.2rem;
+  }
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #636E72;
+}
+
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: #2D3436;
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .mobile-menu-button {
+    display: block;
+  }
+} 
