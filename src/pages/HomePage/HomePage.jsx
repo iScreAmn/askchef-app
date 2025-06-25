@@ -1,33 +1,35 @@
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { FiCalendar, FiBook, FiShoppingCart, FiUser } from 'react-icons/fi'
 import Button from '../../components/ui/Button/Button'
 import { useAuthStore } from '../../store/authStore'
 import './HomePage.css'
 
 const HomePage = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const { isAuthenticated } = useAuthStore()
 
   const features = [
     {
       icon: <FiCalendar />,
-      title: 'Планирование меню',
-      description: 'Составляйте меню на неделю и никогда не думайте о том, что приготовить'
+      title: t('home.features.menuPlanning.title'),
+      description: t('home.features.menuPlanning.description')
     },
     {
       icon: <FiBook />,
-      title: 'База рецептов',
-      description: 'Тысячи проверенных рецептов с пошаговыми инструкциями'
+      title: t('home.features.recipeDatabase.title'),
+      description: t('home.features.recipeDatabase.description')
     },
     {
       icon: <FiShoppingCart />,
-      title: 'Список покупок',
-      description: 'Автоматическая генерация списка покупок на основе вашего меню'
+      title: t('home.features.shoppingList.title'),
+      description: t('home.features.shoppingList.description')
     },
     {
       icon: <FiUser />,
-      title: 'AI помощник',
-      description: 'Умный бот подскажет рецепты из имеющихся ингредиентов'
+      title: t('home.features.aiAssistant.title'),
+      description: t('home.features.aiAssistant.description')
     }
   ]
 
@@ -43,9 +45,9 @@ const HomePage = () => {
     <div className="home-container">
       <section className="hero">
         <div className="hero-content">
-          <h1 className="hero-title">AskChef</h1>
+          <h1 className="hero-title">{t('home.title')}</h1>
           <p className="hero-subtitle">
-            Планировщик рецептов и покупок для умной кухни
+            {t('home.subtitle')}
           </p>
           <div className="cta-buttons">
             <Button
@@ -53,14 +55,14 @@ const HomePage = () => {
               size="lg"
               onClick={handleGetStarted}
             >
-              Начать планирование
+              {t('home.getStarted')}
             </Button>
             <Button
               variant="outline"
               size="lg"
               onClick={() => navigate('/recipes')}
             >
-              Смотреть рецепты
+              {t('home.viewRecipes')}
             </Button>
           </div>
         </div>
@@ -68,7 +70,7 @@ const HomePage = () => {
 
       <section className="features">
         <div className="features-content">
-          <h2 className="features-title">Возможности AskChef</h2>
+          <h2 className="features-title">{t('home.featuresTitle')}</h2>
           <div className="features-grid">
             {features.map((feature, index) => (
               <div key={index} className="feature-card">

@@ -9,11 +9,35 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.6rem;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: #636E72;
+}
+
+.footer-left {
+  flex: 1;
+}
+
+.footer-right {
+  flex-shrink: 0;
 }
 
 .copyright {
   margin: 0;
   font-size: 1.4rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .footer-left,
+  .footer-right {
+    flex: none;
+  }
 } 
