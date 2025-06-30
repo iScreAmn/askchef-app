@@ -1,4 +1,4 @@
-import logo from "./logo/logo-min1.png"
+import logo from "./logo/logo-min.webp"
 // recipes
 import spaghettiBolognese from "./recipes/spaghetti-bolognese.jpeg"
 import greekSalad from "./recipes/greekSalad.jpg"

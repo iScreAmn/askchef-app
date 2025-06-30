@@ -76,7 +76,7 @@
 }
 
 .button--ghost:hover:not(:disabled) {
-  background: #F8F9FA;
+  /* background: #F8F9FA; */
 }
 
 .button--danger {
