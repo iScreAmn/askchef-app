@@ -1,0 +1,51 @@
+.create-list-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form-label {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.form-input {
+  padding: 1.2rem 1.6rem;
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #FF6B35;
+}
+
+.form-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: flex-end;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+} 

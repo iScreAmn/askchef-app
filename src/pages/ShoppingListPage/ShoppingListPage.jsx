@@ -1,10 +1,12 @@
-import { useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { FiChevronDown, FiChevronUp, FiTrash2, FiX } from 'react-icons/fi'
+import { FiChevronDown, FiChevronUp, FiTrash2, FiX, FiPlus, FiCheck } from 'react-icons/fi'
+import { IoMdAddCircleOutline } from "react-icons/io"
 import useRecipeTranslations from '../../hooks/useRecipeTranslations'
 import useShoppingStore from '../../store/shoppingStore'
 import Button from '../../components/ui/Button/Button'
+import CreateCustomListModal from '../../components/ui/CreateCustomListModal/CreateCustomListModal'
 import './ShoppingListPage.css'
 
 const ShoppingListPage = () => {
@@ -17,17 +19,57 @@ const ShoppingListPage = () => {
     activeRecipes,
     expandedCategories,
     checkedIngredients,
+    customLists,
     clearAllSelections,
-    clearShoppingList,
+    clearAllRecipes,
     toggleCategory,
     toggleIngredientCheck,
     removeRecipeFromList,
     toggleRecipeActive,
     isRecipeActive,
-    setExpandedCategories
+    setExpandedCategories,
+    addCustomList,
+    removeCustomList,
+    addItemToCustomList,
+    removeItemFromCustomList,
+    toggleCustomListItem
   } = useShoppingStore()
 
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
+  const [newItemInputs, setNewItemInputs] = useState({})
   const recipes = getTranslatedRecipes()
+
+  // Функция для создания кастомного списка
+  const handleCreateCustomList = (listName) => {
+    addCustomList(listName)
+    
+    // Если есть выбранные рецепты или ингредиенты, скроллим к кастомным спискам
+    if (selectedRecipes.length > 0 || Object.keys(groupedIngredients).length > 0) {
+      setTimeout(() => {
+        const customListsSection = document.querySelector('.custom-lists-section')
+        if (customListsSection) {
+          customListsSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          })
+        }
+      }, 100) // Небольшая задержка для завершения рендера
+    }
+  }
+
+  // Функция для добавления элемента в список
+  const handleAddItem = (listId) => {
+    const itemName = newItemInputs[listId]?.trim()
+    if (itemName) {
+      addItemToCustomList(listId, itemName)
+      setNewItemInputs(prev => ({ ...prev, [listId]: '' }))
+    }
+  }
+
+  // Функция для обновления значения поля ввода
+  const handleInputChange = (listId, value) => {
+    setNewItemInputs(prev => ({ ...prev, [listId]: value }))
+  }
 
   // Группировка и объединение ингредиентов (только для активных рецептов)
   const groupedIngredients = useMemo(() => {
@@ -102,10 +144,19 @@ const ShoppingListPage = () => {
   }
 
   return (
-    <div className="page-container">
-      <h1 className="page-title">{t('navigation.shopping')}</h1>
+        <div className="page-container">
+      <div className="page-header">
+        <h1 className="page-title">{t('navigation.shopping')}</h1>
+        <Button 
+          variant="primary" 
+          icon={<FiPlus />}
+          onClick={() => setIsCreateModalOpen(true)}
+        >
+          {t('shopping.createCustomList')}
+        </Button>
+      </div>
       
-            {/* Добавленные рецепты */}
+      {/* Добавленные рецепты */}
       {selectedRecipes.length > 0 && (
         <div className="selected-recipes">
           <h2>{t('shopping.selectedRecipes')}</h2>
@@ -148,7 +199,7 @@ const ShoppingListPage = () => {
             <Button variant="secondary" onClick={clearAllSelections}>
               {t('shopping.clearSelections')}
             </Button>
-            <Button variant="ghost" onClick={clearShoppingList}>
+            <Button variant="ghost" onClick={clearAllRecipes}>
               <FiTrash2 /> {t('shopping.clearList')}
             </Button>
           </div>
@@ -205,11 +256,97 @@ const ShoppingListPage = () => {
         </div>
       )}
 
-      {Object.keys(groupedIngredients).length === 0 && selectedRecipes.length === 0 && (
+      {/* Кастомные списки */}
+      {customLists.length > 0 && (
+        <div className="custom-lists-section">
+          <div className="section-header">
+            <h2>{t('shopping.customLists')}</h2>
+            <button
+              onClick={() => setIsCreateModalOpen(true)}
+              className="add-list-button"
+              title={t('shopping.createCustomList')}
+            >
+              <IoMdAddCircleOutline />
+            </button>
+          </div>
+          <div className="custom-lists-grid">
+            {customLists.map(list => (
+              <div key={list.id} className="custom-list-card">
+                <div className="custom-list-header">
+                  <h3>{list.name}</h3>
+                  <button 
+                    className="remove-list-button"
+                    onClick={() => removeCustomList(list.id)}
+                    title={t('shopping.removeList')}
+                  >
+                    <FiX />
+                  </button>
+                </div>
+                
+                <div className="custom-list-items">
+                  {list.items.map(item => (
+                    <div key={item.id} className="custom-list-item">
+                      <label className={`custom-item-checkbox ${item.checked ? 'checked' : ''}`}>
+                        <input
+                          type="checkbox"
+                          checked={item.checked}
+                          onChange={() => toggleCustomListItem(list.id, item.id)}
+                        />
+                        <span className="custom-item-text">{item.name}</span>
+                      </label>
+                      <button 
+                        className="remove-item-button"
+                        onClick={() => removeItemFromCustomList(list.id, item.id)}
+                        title={t('shopping.removeItem')}
+                      >
+                        <FiX />
+                      </button>
+                    </div>
+                  ))}
+                  
+                  <div className="add-item-form">
+                    <div className="add-item-input-group">
+                      <input
+                        type="text"
+                        value={newItemInputs[list.id] || ''}
+                        onChange={(e) => handleInputChange(list.id, e.target.value)}
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter') {
+                            handleAddItem(list.id)
+                          }
+                        }}
+                        placeholder={t('shopping.addItemPlaceholder')}
+                        className="add-item-input"
+                      />
+                      <button
+                        onClick={() => handleAddItem(list.id)}
+                        disabled={!newItemInputs[list.id]?.trim()}
+                        className="add-item-button"
+                        title={t('shopping.addItem')}
+                      >
+                        <FiCheck />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {Object.keys(groupedIngredients).length === 0 && selectedRecipes.length === 0 && customLists.length === 0 && (
         <div className="empty-shopping-list">
           <p>{t('shopping.emptyList')}</p>
         </div>
       )}
+
+      {/* Модальное окно создания кастомного списка */}
+      <CreateCustomListModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+        onSave={handleCreateCustomList}
+      />
     </div>
   )
 }

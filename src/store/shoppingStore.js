@@ -16,6 +16,9 @@ const useShoppingStore = create(
       // Развернутые категории
       expandedCategories: {},
 
+      // Кастомные списки покупок
+      customLists: [],
+
       // Добавить рецепт в список покупок
       addRecipeToList: (recipeId) => {
         set((state) => ({
@@ -114,6 +117,77 @@ const useShoppingStore = create(
         set({
           expandedCategories: categories
         })
+      },
+
+      // Добавить кастомный список
+      addCustomList: (listName) => {
+        const newList = {
+          id: Date.now(),
+          name: listName,
+          items: [],
+          createdAt: new Date().toISOString()
+        }
+        set((state) => ({
+          customLists: [...state.customLists, newList]
+        }))
+        return newList.id
+      },
+
+      // Удалить кастомный список
+      removeCustomList: (listId) => {
+        set((state) => ({
+          customLists: state.customLists.filter(list => list.id !== listId)
+        }))
+      },
+
+      // Добавить элемент в кастомный список
+      addItemToCustomList: (listId, itemName) => {
+        set((state) => ({
+          customLists: state.customLists.map(list => 
+            list.id === listId 
+              ? {
+                  ...list,
+                  items: [...list.items, {
+                    id: Date.now(),
+                    name: itemName,
+                    checked: false
+                  }]
+                }
+              : list
+          )
+        }))
+      },
+
+      // Удалить элемент из кастомного списка
+      removeItemFromCustomList: (listId, itemId) => {
+        set((state) => ({
+          customLists: state.customLists.map(list =>
+            list.id === listId
+              ? {
+                  ...list,
+                  items: list.items.filter(item => item.id !== itemId)
+                }
+              : list
+          )
+        }))
+      },
+
+      // Переключить состояние элемента в кастомном списке
+      toggleCustomListItem: (listId, itemId) => {
+        set((state) => ({
+          customLists: state.customLists.map(list =>
+            list.id === listId
+              ? {
+                  ...list,
+                  items: list.items.map(item =>
+                    item.id === itemId
+                      ? { ...item, checked: !item.checked }
+                      : item
+                  )
+                }
+              : list
+          )
+        }))
       }
     }),
     {
@@ -121,7 +195,8 @@ const useShoppingStore = create(
       partialize: (state) => ({
         selectedRecipes: state.selectedRecipes,
         activeRecipes: state.activeRecipes,
-        checkedIngredients: state.checkedIngredients
+        checkedIngredients: state.checkedIngredients,
+        customLists: state.customLists
       })
     }
   )

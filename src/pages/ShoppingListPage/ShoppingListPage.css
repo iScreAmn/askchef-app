@@ -6,9 +6,239 @@
   width: 100%;
 }
 
-.page-title {
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 3.2rem;
-  color: #2D3436;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.page-title {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* Кастомные списки */
+.custom-lists-section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.add-list-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+}
+
+.add-list-button:hover {
+  background: var(--primary-hover-color);
+  transform: scale(1.1);
+}
+
+.add-list-button:active {
+  transform: scale(0.95);
+}
+
+.custom-lists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.custom-list-card {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.custom-list-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.custom-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.custom-list-header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.remove-list-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-list-button:hover {
+  color: #FF4757;
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.custom-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.custom-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+}
+
+.custom-item-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  flex: 1;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.custom-item-checkbox.checked .custom-item-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.custom-item-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.custom-item-text {
+  flex: 1;
+  transition: all 0.2s ease;
+}
+
+.remove-item-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.8rem;
+}
+
+.remove-item-button:hover {
+  color: #FF4757;
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.remove-item-button svg {
+  font-size: 1.4rem;
+}
+
+.add-item-form {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.add-item-input-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.add-item-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--surface-color);
+  color: var(--text-color);
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.add-item-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.add-item-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.add-item-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.add-item-button:hover:not(:disabled) {
+  background: var(--primary-hover-color);
+  border-color: var(--primary-hover-color);
+  transform: scale(1.05);
+}
+
+.add-item-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* Выбранные рецепты */
@@ -252,6 +482,25 @@
 @media (max-width: 768px) {
   .page-container {
     padding: 2rem 1.6rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+
+  .custom-lists-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .custom-list-card {
+    padding: 1.6rem;
+  }
+
+  .custom-list-header h3 {
+    font-size: 1.6rem;
   }
 
   .selected-recipes-grid {
