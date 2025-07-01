@@ -585,7 +585,7 @@ i18n
             "removeItem": "Remove item",
             "addItemPlaceholder": "Add item...",
             "addItem": "Add",
-            "clearSelections": "Clear All Selections",
+            "clearSelections": "Remove Selections",
             "clearList": "Clear List",
             "removeIngredient": "Remove ingredient",
             "removeRecipe": "Remove recipe",
