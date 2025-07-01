@@ -63,6 +63,7 @@ i18n
             "minutes": "мин",
             "tags": "Теги",
             "addToList": "В список",
+            "inList": "В списке",
             "addToMenu": "Добавить в меню",
             "notFound": "Рецепт не найден",
             "noRecipes": "В этой категории пока нет рецептов",
@@ -279,6 +280,24 @@ i18n
                 "description": "Умный бот подскажет рецепты из имеющихся ингредиентов"
               }
             }
+          },
+          "shopping": {
+            "shoppingList": "Список покупок",
+            "selectedRecipes": "Выбранные рецепты",
+            "clearSelections": "Снять все отметки",
+            "clearList": "Очистить список",
+            "removeIngredient": "Удалить ингредиент",
+            "removeRecipe": "Удалить рецепт",
+            "emptyList": "Добавьте рецепты в список покупок, нажав кнопку \"В список\" на странице рецептов",
+            "categories": {
+              "vegetables": "Овощи",
+              "meat": "Белковое",
+              "dairy": "Молочка",
+              "grains": "Крупы и мука",
+              "herbs": "Зелень",
+              "spices": "Специи",
+              "other": "Другое"
+            }
           }
         }
       },
@@ -329,6 +348,7 @@ i18n
             "minutes": "min",
             "tags": "Tags",
             "addToList": "Add to List",
+            "inList": "In List",
             "addToMenu": "Add to Menu",
             "notFound": "Recipe not found",
             "noRecipes": "No recipes in this category yet",
@@ -544,6 +564,24 @@ i18n
                 "title": "AI Assistant",
                 "description": "Smart bot suggests recipes from available ingredients"
               }
+            }
+          },
+          "shopping": {
+            "shoppingList": "Shopping List",
+            "selectedRecipes": "Selected Recipes",
+            "clearSelections": "Clear All Selections",
+            "clearList": "Clear List",
+            "removeIngredient": "Remove ingredient",
+            "removeRecipe": "Remove recipe",
+            "emptyList": "Add recipes to shopping list by clicking \"Add to List\" button on recipes page",
+            "categories": {
+              "vegetables": "Vegetables",
+              "meat": "Protein",
+              "dairy": "Dairy",
+              "grains": "Grains & Flour",
+              "herbs": "Herbs",
+              "spices": "Spices",
+              "other": "Other"
             }
           }
         }
