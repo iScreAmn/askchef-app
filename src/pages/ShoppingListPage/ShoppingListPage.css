@@ -9,4 +9,272 @@
 .page-title {
   margin-bottom: 3.2rem;
   color: #2D3436;
+}
+
+/* Выбранные рецепты */
+.selected-recipes {
+  margin-bottom: 4rem;
+}
+
+.selected-recipes h2 {
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.selected-recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.selected-recipe {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.selected-recipe:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.selected-recipe-image {
+  cursor: pointer;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.selected-recipe-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.selected-recipe-image:hover img {
+  transform: scale(1.05);
+}
+
+.selected-recipe-content {
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selected-recipe-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+  flex: 1;
+  line-height: 1.3;
+}
+
+.remove-recipe {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.8rem;
+}
+
+.remove-recipe:hover {
+  color: #FF4757;
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.remove-recipe svg {
+  font-size: 1.6rem;
+}
+
+/* Действия над списком */
+.shopping-actions {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+/* Список покупок */
+.shopping-list {
+  margin-top: 4rem;
+}
+
+.shopping-list h2 {
+  margin-bottom: 2.4rem;
+  color: var(--text-primary);
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+/* Категории ингредиентов */
+.ingredient-category {
+  margin-bottom: 1.6rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background: var(--bg-secondary);
+}
+
+.category-header:hover {
+  background: var(--bg-hover);
+}
+
+.category-header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.category-header svg {
+  font-size: 2rem;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+/* Список ингредиентов */
+.ingredient-list {
+  padding: 0 2rem 1.6rem 2rem;
+}
+
+.ingredient-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.ingredient-item:last-child {
+  border-bottom: none;
+}
+
+.ingredient-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  cursor: pointer;
+  flex: 1;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.ingredient-checkbox.checked .ingredient-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.ingredient-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.ingredient-text {
+  flex: 1;
+  transition: all 0.2s ease;
+}
+
+.remove-ingredient {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.8rem;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-ingredient:hover {
+  color: #FF4757;
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.remove-ingredient svg {
+  font-size: 1.6rem;
+}
+
+/* Пустой список */
+.empty-shopping-list {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.empty-shopping-list p {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 2rem 1.6rem;
+  }
+
+  .selected-recipes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .selected-recipe-content {
+    padding: 1rem;
+  }
+
+  .selected-recipe-title {
+    font-size: 1.3rem;
+  }
+
+  .shopping-actions {
+    flex-direction: column;
+  }
+
+  .category-header {
+    padding: 1.2rem 1.6rem;
+  }
+
+  .category-header h3 {
+    font-size: 1.6rem;
+  }
+
+  .ingredient-list {
+    padding: 0 1.6rem 1.2rem 1.6rem;
+  }
+
+  .ingredient-item {
+    padding: 1rem 0;
+  }
+
+  .ingredient-checkbox {
+    font-size: 1.4rem;
+    gap: 1rem;
+  }
 } 
