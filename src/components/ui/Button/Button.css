@@ -61,7 +61,6 @@
 .button--outline {
   color: #fff;
   background: #FF6B35;
-
 }
 
 .button--outline:hover:not(:disabled) {

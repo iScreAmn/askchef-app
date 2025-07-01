@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { FiClock, FiUsers, FiTrendingUp, FiArrowLeft, FiHeart, FiChevronDown, FiChevronUp } from 'react-icons/fi'
+import { FiClock, FiUsers, FiTrendingUp, FiArrowLeft, FiChevronDown, FiChevronUp } from 'react-icons/fi'
+import { LuShoppingCart } from "react-icons/lu"
+import { IoBookmarkOutline, IoBookmark } from "react-icons/io5"
 import { mockRecipes } from '../../data/mockData'
 import useRecipeTranslations from '../../hooks/useRecipeTranslations'
 import Button from '../../components/ui/Button/Button'
@@ -13,6 +15,7 @@ const RecipeDetailPage = () => {
   const { t } = useTranslation()
   const { getTranslatedRecipe } = useRecipeTranslations()
   const [showTips, setShowTips] = useState(false)
+  const [isFavorite, setIsFavorite] = useState(false)
   
   const originalRecipe = mockRecipes.find(r => r.id === parseInt(id))
   const recipe = originalRecipe ? getTranslatedRecipe(originalRecipe) : null
@@ -86,6 +89,13 @@ const RecipeDetailPage = () => {
             <h1 className="recipe-title-large">{recipe.title}</h1>
             <p className="recipe-description-large">{recipe.description}</p>
             
+            <button 
+              className={`favorite-button ${isFavorite ? 'favorite-button--active' : ''}`}
+              onClick={() => setIsFavorite(!isFavorite)}
+            >
+              {isFavorite ? <IoBookmark /> : <IoBookmarkOutline />}
+            </button>
+            
             <div className="recipe-stats">
               <div className="stat-item">
                 <FiClock size={20} />
@@ -116,7 +126,7 @@ const RecipeDetailPage = () => {
             
             <div className="recipe-actions">
               <Button variant="primary" size="lg">
-                <FiHeart /> {t('recipes.addToFavorites')}
+                <LuShoppingCart /> {t('recipes.addToList')}
               </Button>
               <Button variant="secondary" size="lg">
                 {t('recipes.addToMenu')}
