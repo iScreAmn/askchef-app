@@ -58,6 +58,16 @@
   transform: translateY(-1px);
 }
 
+.button--success {
+  background: #00B894;
+  color: #FFFFFF;
+}
+
+.button--success:hover:not(:disabled) {
+  background: #00A085;
+  transform: translateY(-1px);
+}
+
 .button--outline {
   color: #fff;
   background: #FF6B35;
