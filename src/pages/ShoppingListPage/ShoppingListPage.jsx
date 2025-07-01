@@ -14,6 +14,7 @@ const ShoppingListPage = () => {
   
   const {
     selectedRecipes,
+    activeRecipes,
     expandedCategories,
     checkedIngredients,
     clearAllSelections,
@@ -21,16 +22,18 @@ const ShoppingListPage = () => {
     toggleCategory,
     toggleIngredientCheck,
     removeRecipeFromList,
+    toggleRecipeActive,
+    isRecipeActive,
     setExpandedCategories
   } = useShoppingStore()
 
   const recipes = getTranslatedRecipes()
 
-  // Группировка и объединение ингредиентов
+  // Группировка и объединение ингредиентов (только для активных рецептов)
   const groupedIngredients = useMemo(() => {
     const ingredientMap = {}
     
-    selectedRecipes.forEach(recipeId => {
+    activeRecipes.forEach(recipeId => {
       const recipe = recipes.find(r => r.id === recipeId)
       if (recipe) {
         recipe.ingredients.forEach(ingredient => {
@@ -58,7 +61,7 @@ const ShoppingListPage = () => {
     })
 
     return categoryGroups
-  }, [selectedRecipes, recipes])
+  }, [activeRecipes, recipes])
 
   // Автоматически открываем все категории при появлении новых ингредиентов
   const categoryKeys = Object.keys(groupedIngredients)
@@ -74,15 +77,14 @@ const ShoppingListPage = () => {
 
   // Функция для удаления ингредиента из списка
   const removeIngredient = (ingredientName) => {
-    // Находим рецепты, которые содержат этот ингредиент
-    const recipesToUpdate = selectedRecipes.filter(recipeId => {
+    // Находим активные рецепты, которые содержат этот ингредиент
+    const recipesToDeactivate = activeRecipes.filter(recipeId => {
       const recipe = recipes.find(r => r.id === recipeId)
       return recipe?.ingredients.some(ing => ing.name === ingredientName)
     })
     
-    // Убираем эти рецепты из выбранных (упрощенная логика)
-    // В реальном приложении тут была бы более сложная логика исключения конкретных ингредиентов
-    recipesToUpdate.forEach(recipeId => removeRecipeFromList(recipeId))
+    // Деактивируем эти рецепты (убираем их ингредиенты из списка)
+    recipesToDeactivate.forEach(recipeId => toggleRecipeActive(recipeId))
   }
 
   // Названия категорий
@@ -121,7 +123,14 @@ const ShoppingListPage = () => {
                     <img src={recipe.image} alt={recipe.title} />
                   </div>
                   <div className="selected-recipe-content">
-                    <h4 className="selected-recipe-title">{recipe.title}</h4>
+                    <label className="recipe-checkbox">
+                      <input
+                        type="checkbox"
+                        checked={isRecipeActive(recipe.id)}
+                        onChange={() => toggleRecipeActive(recipe.id)}
+                      />
+                      <h4 className="selected-recipe-title">{recipe.title}</h4>
+                    </label>
                     <button 
                       className="remove-recipe"
                       onClick={() => removeRecipeFromList(recipe.id)}
