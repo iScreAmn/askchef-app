@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { FiChevronDown, FiChevronUp, FiTrash2, FiX, FiPlus, FiCheck } from 'react-icons/fi'
-import { IoMdAddCircleOutline } from "react-icons/io"
+import { IoMdAddCircleOutline, IoMdCheckboxOutline } from "react-icons/io"
 import useRecipeTranslations from '../../hooks/useRecipeTranslations'
 import useShoppingStore from '../../store/shoppingStore'
 import Button from '../../components/ui/Button/Button'
@@ -197,7 +197,7 @@ const ShoppingListPage = () => {
           
           <div className="shopping-actions">
             <Button variant="secondary" onClick={clearAllSelections}>
-              {t('shopping.clearSelections')}
+              <IoMdCheckboxOutline /> {t('shopping.clearSelections')}
             </Button>
             <Button variant="ghost" onClick={clearAllRecipes}>
               <FiTrash2 /> {t('shopping.clearList')}
