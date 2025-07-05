@@ -1,24 +1,41 @@
 import { useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { FiClock, FiUsers, FiTrendingUp, FiArrowLeft, FiChevronDown, FiChevronUp } from 'react-icons/fi'
 import { LuShoppingCart } from "react-icons/lu"
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5"
 import { mockRecipes } from '../../data/mockData'
 import useRecipeTranslations from '../../hooks/useRecipeTranslations'
+import useShoppingStore from '../../store/shoppingStore'
 import Button from '../../components/ui/Button/Button'
 import './RecipeDetailPage.css'
 
 const RecipeDetailPage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const { t } = useTranslation()
   const { getTranslatedRecipe } = useRecipeTranslations()
   const [showTips, setShowTips] = useState(false)
   const [isFavorite, setIsFavorite] = useState(false)
   
+  const { toggleRecipeInList, isRecipeInList } = useShoppingStore()
+  const isInShoppingList = isRecipeInList(parseInt(id))
+  
+  // Определяем откуда пришел пользователь
+  const fromShopping = searchParams.get('from') === 'shopping'
+  
   const originalRecipe = mockRecipes.find(r => r.id === parseInt(id))
   const recipe = originalRecipe ? getTranslatedRecipe(originalRecipe) : null
+
+  // Функция для возврата назад
+  const handleBackClick = () => {
+    if (fromShopping) {
+      navigate('/shopping')
+    } else {
+      navigate(`/recipes?category=${recipe.category}`)
+    }
+  }
 
   const getDifficultyText = (difficulty) => {
     const difficulties = {
@@ -67,7 +84,7 @@ const RecipeDetailPage = () => {
           <Button 
             variant="ghost" 
             icon={<FiArrowLeft />}
-            onClick={() => navigate(`/recipes?category=${recipe.category}`)}
+            onClick={handleBackClick}
             className="back-button"
           >
             {t('common.back')}
@@ -125,8 +142,13 @@ const RecipeDetailPage = () => {
             </div>
             
             <div className="recipe-actions">
-              <Button variant="primary" size="lg">
-                <LuShoppingCart /> {t('recipes.addToList')}
+              <Button 
+                variant="primary"
+                size="lg"
+                onClick={() => toggleRecipeInList(parseInt(id))}
+              >
+                <LuShoppingCart /> 
+                {isInShoppingList ? t('recipes.inList') : t('recipes.addToList')}
               </Button>
               <Button variant="secondary" size="lg">
                 {t('recipes.addToMenu')}

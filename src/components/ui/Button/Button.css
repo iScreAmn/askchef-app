@@ -39,7 +39,7 @@
 
 /* Варианты */
 .button--primary {
-  background: #FF6B35;
+  background: #ff6b35;
   color: #FFFFFF;
 }
 
@@ -58,6 +58,16 @@
   transform: translateY(-1px);
 }
 
+.button--success {
+  background: #00B894;
+  color: #FFFFFF;
+}
+
+.button--success:hover:not(:disabled) {
+  background: #00A085;
+  transform: translateY(-1px);
+}
+
 .button--outline {
   color: #fff;
   background: #FF6B35;
@@ -70,17 +80,18 @@
 }
 
 .button--ghost {
-  background: transparent;
-  color: #2D3436;
+  background: var(--primary-color);
+  color: #fff;
 }
 
 .button--ghost:hover:not(:disabled) {
-  /* background: #F8F9FA; */
+  transform: translateY(-1px);
+  background: #E55A2B;
 }
 
 .button--danger {
   background: #E17055;
-  color: #FFFFFF;
+  color: #fff;
 }
 
 .button--danger:hover:not(:disabled) {

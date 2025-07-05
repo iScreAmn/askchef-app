@@ -6,7 +6,811 @@
   width: 100%;
 }
 
-.page-title {
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 3.2rem;
-  color: #2D3436;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.page-title {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* Кастомные списки */
+.custom-lists-section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.add-list-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+}
+
+.add-list-button:hover {
+  /* background: var(--primary-light); */
+  transform: scale(1.1);
+}
+
+.add-list-button:active {
+  transform: scale(0.95);
+}
+
+.add-list-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+}
+
+.add-list-button:disabled:hover {
+  transform: none;
+  background: var(--bg-secondary);
+}
+
+.custom-lists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.custom-list-card {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+.custom-list-card:hover:not(.dragging) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--primary-color);
+}
+
+/* Drag and Drop стили для header внутри card */
+.custom-list-card .custom-list-header {
+  cursor: grab;
+  user-select: none;
+  transition: background-color 0.2s ease;
+  padding: 0.8rem;
+  margin: -0.8rem -0.8rem 0.8rem -0.8rem;
+  position: relative;
+  /* border-radius: 8px; */
+  box-sizing: border-box;
+}
+
+/* .custom-list-header::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>') center/contain no-repeat;
+  opacity: 0.5;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease;
+} */
+
+.custom-list-card .custom-list-header:hover {
+  background: rgba(255, 107, 53, 0.071);
+  border-radius: 8px;
+}
+
+.custom-list-card .custom-list-header:hover::before {
+  opacity: 1;
+}
+
+.custom-list-card .custom-list-header:active {
+  cursor: grabbing;
+  background: var(--primary-color);
+  color: white;
+}
+
+.custom-list-card.dragging {
+  opacity: 0.9;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--primary-color);
+  background: var(--background-card);
+  transform: rotate(2deg) scale(1.05);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Зона для drop */
+.custom-list-card:not(.dragging) {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* Removed duplicate hover effect to prevent jerky behavior */
+
+/* Placeholder для drop зоны */
+.drop-placeholder {
+  border: 2px dashed var(--primary-color) !important;
+  background: var(--primary-light) !important;
+  opacity: 0.7;
+  transform: scale(1.02);
+  box-sizing: border-box;
+}
+
+/* Улучшенная анимация для grid */
+.custom-lists-grid .custom-list-card {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-lists-grid .custom-list-card.dragging {
+  transition: none;
+}
+
+.custom-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border-light);
+  box-sizing: border-box;
+}
+
+.custom-list-card .custom-list-header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+  cursor: grab;
+}
+
+.custom-list-card .custom-list-header h3:active {
+  cursor: grabbing;
+}
+
+.remove-list-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  position: relative;
+  z-index: 10;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.remove-list-button:hover {
+  color: #FF4757;
+  background: rgba(255, 71, 87, 0.15);
+  transform: scale(1.1);
+}
+
+.remove-list-button:active {
+  transform: scale(0.95);
+}
+
+.remove-list-button svg {
+  font-size: 1.6rem;
+  pointer-events: none;
+}
+
+.custom-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.custom-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+}
+
+.item-actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.custom-item-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  flex: 1;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.custom-item-checkbox.checked .custom-item-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.custom-item-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.custom-item-text {
+  flex: 1;
+  transition: all 0.2s ease;
+}
+
+.edit-item-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.edit-item-button:hover:not(:disabled) {
+  color: var(--primary-color);
+  background: rgba(255, 107, 53, 0.1);
+  transform: scale(1.1);
+}
+
+.edit-item-button:disabled,
+.edit-item-button--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.edit-item-button svg {
+  font-size: 1.4rem;
+}
+
+.remove-item-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.remove-item-button:hover {
+  color: #FF4757;
+  background: rgba(255, 71, 87, 0.1);
+  transform: scale(1.1);
+}
+
+.remove-item-button svg {
+  font-size: 1.4rem;
+}
+
+.edit-item-form {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.edit-item-input {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  background: var(--surface-color);
+  color: var(--text-color);
+  font-size: 1.4rem;
+  transition: border-color 0.3s ease;
+}
+
+.edit-item-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+}
+
+.edit-item-buttons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.save-edit-button,
+.cancel-edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 28px;
+  transition: all 0.2s ease;
+}
+
+.save-edit-button {
+  color: #27ae60;
+}
+
+.save-edit-button:hover {
+  color: #27ae60;
+  background: rgba(39, 174, 96, 0.1);
+  transform: scale(1.1);
+}
+
+.cancel-edit-button {
+  color: var(--text-secondary);
+}
+
+.cancel-edit-button:hover {
+  color: #FF4757;
+  background: rgba(255, 71, 87, 0.1);
+  transform: scale(1.1);
+}
+
+.save-edit-button svg,
+.cancel-edit-button svg {
+  font-size: 1.4rem;
+}
+
+.add-item-form {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.add-item-input-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.add-item-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--surface-color);
+  color: var(--text-color);
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.add-item-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.add-item-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.add-item-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.add-item-button:hover:not(:disabled) {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+.add-item-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Выбранные рецепты */
+.selected-recipes {
+  margin-bottom: 4rem;
+}
+
+.selected-recipes h2 {
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.selected-recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.selected-recipe {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.selected-recipe:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.selected-recipe-image {
+  cursor: pointer;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.selected-recipe-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* transition: transform 0.2s ease !important; */
+}
+
+.selected-recipe-image:hover img {
+  /* transform: scale(1.05); */
+}
+
+.selected-recipe-content {
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recipe-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.recipe-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.selected-recipe-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+  flex: 1;
+  line-height: 1.3;
+}
+
+.remove-recipe {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.8rem;
+}
+
+.remove-recipe:hover {
+  color: #FF4757;
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.remove-recipe svg {
+  font-size: 1.6rem;
+}
+
+/* Действия над списком */
+.shopping-actions {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+/* Фиксированная ширина для кнопок действий */
+.fixed-width-button {
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
+  justify-content: center !important;
+}
+
+/* Список покупок */
+.shopping-list {
+  margin-top: 4rem;
+}
+
+.shopping-list h2 {
+  margin-bottom: 2.4rem;
+  color: var(--text-primary);
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+/* Категории ингредиентов */
+.ingredient-category {
+  margin-bottom: 1.6rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background: var(--bg-secondary);
+}
+
+.category-header:hover {
+  background: var(--bg-hover);
+}
+
+.category-header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.category-header svg {
+  font-size: 2rem;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+/* Список ингредиентов */
+.ingredient-list {
+  padding: 0 2rem 1.6rem 2rem;
+}
+
+.ingredient-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.ingredient-item:last-child {
+  border-bottom: none;
+}
+
+.ingredient-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  cursor: pointer;
+  flex: 1;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.ingredient-checkbox.checked .ingredient-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.ingredient-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.ingredient-text {
+  flex: 1;
+  transition: all 0.2s ease;
+}
+
+.remove-ingredient {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.8rem;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-ingredient:hover {
+  color: #FF4757;
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.remove-ingredient svg {
+  font-size: 1.6rem;
+}
+
+/* Пустой список */
+.empty-shopping-list {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.empty-shopping-list p {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 2rem 1.6rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+
+  .custom-lists-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .custom-list-card {
+    padding: 1.6rem;
+  }
+
+  .custom-list-card .custom-list-header h3 {
+    font-size: 1.6rem;
+  }
+
+  .selected-recipes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .selected-recipe-content {
+    padding: 1rem;
+  }
+
+  .selected-recipe-title {
+    font-size: 1.3rem;
+  }
+
+  .shopping-actions {
+    flex-direction: column;
+  }
+
+  .category-header {
+    padding: 1.2rem 1.6rem;
+  }
+
+  .category-header h3 {
+    font-size: 1.6rem;
+  }
+
+  .ingredient-list {
+    padding: 0 1.6rem 1.2rem 1.6rem;
+  }
+
+  .ingredient-item {
+    padding: 1rem 0;
+  }
+
+  .ingredient-checkbox {
+    font-size: 1.4rem;
+    gap: 1rem;
+  }
+
+  .item-actions {
+    gap: 0.2rem;
+  }
+
+  .edit-item-button,
+  .remove-item-button {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 0.2rem;
+  }
+
+  .edit-item-button svg,
+  .remove-item-button svg {
+    font-size: 1.2rem;
+  }
+
+  .edit-item-form {
+    gap: 0.4rem;
+  }
+
+  .edit-item-input {
+    font-size: 1.3rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .edit-item-buttons {
+    gap: 0.2rem;
+  }
+
+  .save-edit-button,
+  .cancel-edit-button {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 0.2rem;
+  }
+
+  .save-edit-button svg,
+  .cancel-edit-button svg {
+    font-size: 1.2rem;
+  }
 } 
