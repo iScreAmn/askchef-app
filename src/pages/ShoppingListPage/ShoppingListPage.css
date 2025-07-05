@@ -64,6 +64,19 @@
   transform: scale(0.95);
 }
 
+.add-list-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+}
+
+.add-list-button:disabled:hover {
+  transform: none;
+  background: var(--bg-secondary);
+}
+
 .custom-lists-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -560,6 +573,14 @@
   display: flex;
   gap: 1.2rem;
   flex-wrap: wrap;
+}
+
+/* Фиксированная ширина для кнопок действий */
+.fixed-width-button {
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
+  justify-content: center !important;
 }
 
 /* Список покупок */

@@ -76,6 +76,26 @@ const useShoppingStore = create(
         })
       },
 
+      // Отметить все рецепты как активные
+      selectAllRecipes: () => {
+        set((state) => ({
+          activeRecipes: [...state.selectedRecipes],
+          checkedIngredients: {}
+        }))
+      },
+
+      // Проверить, все ли выбранные рецепты активны
+      areAllRecipesSelected: () => {
+        const { selectedRecipes, activeRecipes } = get()
+        return selectedRecipes.length > 0 && selectedRecipes.every(id => activeRecipes.includes(id))
+      },
+
+      // Проверить, есть ли хотя бы один активный рецепт
+      hasAnyActiveRecipes: () => {
+        const { activeRecipes } = get()
+        return activeRecipes.length > 0
+      },
+
       // Удалить все рецепты из списка покупок
       clearAllRecipes: () => {
         set({

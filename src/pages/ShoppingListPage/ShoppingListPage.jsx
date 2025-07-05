@@ -22,6 +22,8 @@ const ShoppingListPage = () => {
     checkedIngredients,
     customLists,
     clearAllSelections,
+    selectAllRecipes,
+    hasAnyActiveRecipes,
     clearAllRecipes,
     toggleCategory,
     toggleIngredientCheck,
@@ -49,6 +51,18 @@ const ShoppingListPage = () => {
   const [editingItemText, setEditingItemText] = useState('')
   
   const recipes = getTranslatedRecipes()
+
+  // Определяем состояние кнопки "отметить все"/"снять все отметки"
+  const hasActiveRecipes = hasAnyActiveRecipes()
+  
+  // Функция для переключения состояния всех рецептов
+  const handleToggleAllSelections = () => {
+    if (hasActiveRecipes) {
+      clearAllSelections()
+    } else {
+      selectAllRecipes()
+    }
+  }
 
   // Начало перетаскивания
   const startDrag = (e, listId) => {
@@ -354,10 +368,10 @@ const ShoppingListPage = () => {
           </div>
           
           <div className="shopping-actions">
-            <Button variant="secondary" onClick={clearAllSelections}>
-              <IoMdCheckboxOutline /> {t('shopping.clearSelections')}
+            <Button variant="secondary" className="fixed-width-button" onClick={handleToggleAllSelections}>
+              <IoMdCheckboxOutline /> {hasActiveRecipes ? t('shopping.clearSelections') : t('shopping.selectAll')}
             </Button>
-            <Button variant="ghost" onClick={clearAllRecipes}>
+            <Button variant="ghost" className="fixed-width-button" onClick={clearAllRecipes}>
               <FiTrash2 /> {t('shopping.clearList')}
             </Button>
           </div>
@@ -415,10 +429,11 @@ const ShoppingListPage = () => {
       )}
 
       {/* Кастомные списки */}
-      {customLists.length > 0 && (
-        <div className="custom-lists-section">
+      <div className="custom-lists-section">
+        {(hasActiveRecipes || customLists.length > 0) && (
           <div className="section-header">
             <h2>{t('shopping.customLists')}</h2>
+            {hasActiveRecipes && (
             <button
               onClick={() => setIsCreateModalOpen(true)}
               className="add-list-button"
@@ -426,7 +441,10 @@ const ShoppingListPage = () => {
             >
               <IoMdAddCircleOutline />
             </button>
+          )}
           </div>
+        )}
+        {customLists.length > 0 && (
           <div className="custom-lists-grid">
             {customLists.map(list => (
               <div 
@@ -578,8 +596,8 @@ const ShoppingListPage = () => {
               </div>
             ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {Object.keys(groupedIngredients).length === 0 && selectedRecipes.length === 0 && customLists.length === 0 && (
         <div className="empty-shopping-list">
