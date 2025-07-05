@@ -188,6 +188,39 @@ const useShoppingStore = create(
               : list
           )
         }))
+      },
+
+      // Обновить элемент в кастомном списке
+      updateCustomListItem: (listId, itemId, updates) => {
+        set((state) => ({
+          customLists: state.customLists.map(list =>
+            list.id === listId
+              ? {
+                  ...list,
+                  items: list.items.map(item =>
+                    item.id === itemId
+                      ? { ...item, ...updates }
+                      : item
+                  )
+                }
+              : list
+          )
+        }))
+      },
+
+      // Изменить порядок кастомных списков
+      reorderCustomLists: (newOrderIds) => {
+        set((state) => {
+          const orderedLists = newOrderIds.map(id => {
+            return state.customLists.find(list => list.id.toString() === id)
+          }).filter(Boolean) // убираем undefined элементы
+          
+          console.log('Store reorder:', newOrderIds, 'Result:', orderedLists)
+          
+          return {
+            customLists: orderedLists
+          }
+        })
       }
     }),
     {

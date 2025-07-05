@@ -56,7 +56,7 @@
 }
 
 .add-list-button:hover {
-  background: var(--primary-hover-color);
+  /* background: var(--primary-light); */
   transform: scale(1.1);
 }
 
@@ -75,12 +75,91 @@
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+  border: 2px solid transparent;
+  box-sizing: border-box;
 }
 
-.custom-list-card:hover {
+.custom-list-card:hover:not(.dragging) {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--primary-color);
+}
+
+/* Drag and Drop стили для header внутри card */
+.custom-list-card .custom-list-header {
+  cursor: grab;
+  user-select: none;
+  transition: background-color 0.2s ease;
+  padding: 0.8rem;
+  margin: -0.8rem -0.8rem 0.8rem -0.8rem;
+  position: relative;
+  /* border-radius: 8px; */
+  box-sizing: border-box;
+}
+
+/* .custom-list-header::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>') center/contain no-repeat;
+  opacity: 0.5;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease;
+} */
+
+.custom-list-card .custom-list-header:hover {
+  background: rgba(255, 107, 53, 0.071);
+  border-radius: 8px;
+}
+
+.custom-list-card .custom-list-header:hover::before {
+  opacity: 1;
+}
+
+.custom-list-card .custom-list-header:active {
+  cursor: grabbing;
+  background: var(--primary-color);
+  color: white;
+}
+
+.custom-list-card.dragging {
+  opacity: 0.9;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--primary-color);
+  background: var(--background-card);
+  transform: rotate(2deg) scale(1.05);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Зона для drop */
+.custom-list-card:not(.dragging) {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* Removed duplicate hover effect to prevent jerky behavior */
+
+/* Placeholder для drop зоны */
+.drop-placeholder {
+  border: 2px dashed var(--primary-color) !important;
+  background: var(--primary-light) !important;
+  opacity: 0.7;
+  transform: scale(1.02);
+  box-sizing: border-box;
+}
+
+/* Улучшенная анимация для grid */
+.custom-lists-grid .custom-list-card {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-lists-grid .custom-list-card.dragging {
+  transition: none;
 }
 
 .custom-list-header {
@@ -90,31 +169,53 @@
   margin-bottom: 1.6rem;
   padding-bottom: 1.2rem;
   border-bottom: 1px solid var(--border-light);
+  box-sizing: border-box;
 }
 
-.custom-list-header h3 {
+.custom-list-card .custom-list-header h3 {
   margin: 0;
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--text-primary);
+  flex: 1;
+  cursor: grab;
+}
+
+.custom-list-card .custom-list-header h3:active {
+  cursor: grabbing;
 }
 
 .remove-list-button {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.4rem;
+  padding: 0.6rem;
   color: var(--text-secondary);
-  transition: color 0.2s ease;
-  border-radius: 4px;
+  transition: all 0.2s ease;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
+  position: relative;
+  z-index: 10;
+  min-width: 32px;
+  min-height: 32px;
 }
 
 .remove-list-button:hover {
   color: #FF4757;
-  background: rgba(255, 71, 87, 0.1);
+  background: rgba(255, 71, 87, 0.15);
+  transform: scale(1.1);
+}
+
+.remove-list-button:active {
+  transform: scale(0.95);
+}
+
+.remove-list-button svg {
+  font-size: 1.6rem;
+  pointer-events: none;
 }
 
 .custom-list-items {
@@ -128,6 +229,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem 0;
+}
+
+.item-actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
 }
 
 .custom-item-checkbox {
@@ -158,26 +265,130 @@
   transition: all 0.2s ease;
 }
 
+.edit-item-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.edit-item-button:hover:not(:disabled) {
+  color: var(--primary-color);
+  background: rgba(255, 107, 53, 0.1);
+  transform: scale(1.1);
+}
+
+.edit-item-button:disabled,
+.edit-item-button--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.edit-item-button svg {
+  font-size: 1.4rem;
+}
+
 .remove-item-button {
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.4rem;
   color: var(--text-secondary);
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 0.8rem;
+  min-width: 28px;
+  min-height: 28px;
 }
 
 .remove-item-button:hover {
   color: #FF4757;
   background: rgba(255, 71, 87, 0.1);
+  transform: scale(1.1);
 }
 
 .remove-item-button svg {
+  font-size: 1.4rem;
+}
+
+.edit-item-form {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.edit-item-input {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  background: var(--surface-color);
+  color: var(--text-color);
+  font-size: 1.4rem;
+  transition: border-color 0.3s ease;
+}
+
+.edit-item-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+}
+
+.edit-item-buttons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.save-edit-button,
+.cancel-edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 28px;
+  transition: all 0.2s ease;
+}
+
+.save-edit-button {
+  color: #27ae60;
+}
+
+.save-edit-button:hover {
+  color: #27ae60;
+  background: rgba(39, 174, 96, 0.1);
+  transform: scale(1.1);
+}
+
+.cancel-edit-button {
+  color: var(--text-secondary);
+}
+
+.cancel-edit-button:hover {
+  color: #FF4757;
+  background: rgba(255, 71, 87, 0.1);
+  transform: scale(1.1);
+}
+
+.save-edit-button svg,
+.cancel-edit-button svg {
   font-size: 1.4rem;
 }
 
@@ -230,8 +441,8 @@
 }
 
 .add-item-button:hover:not(:disabled) {
-  background: var(--primary-hover-color);
-  border-color: var(--primary-hover-color);
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
   transform: scale(1.05);
 }
 
@@ -499,7 +710,7 @@
     padding: 1.6rem;
   }
 
-  .custom-list-header h3 {
+  .custom-list-card .custom-list-header h3 {
     font-size: 1.6rem;
   }
 
@@ -539,5 +750,46 @@
   .ingredient-checkbox {
     font-size: 1.4rem;
     gap: 1rem;
+  }
+
+  .item-actions {
+    gap: 0.2rem;
+  }
+
+  .edit-item-button,
+  .remove-item-button {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 0.2rem;
+  }
+
+  .edit-item-button svg,
+  .remove-item-button svg {
+    font-size: 1.2rem;
+  }
+
+  .edit-item-form {
+    gap: 0.4rem;
+  }
+
+  .edit-item-input {
+    font-size: 1.3rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .edit-item-buttons {
+    gap: 0.2rem;
+  }
+
+  .save-edit-button,
+  .cancel-edit-button {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 0.2rem;
+  }
+
+  .save-edit-button svg,
+  .cancel-edit-button svg {
+    font-size: 1.2rem;
   }
 } 
