@@ -1,3 +1,28 @@
+// Импорт изображений рецептов
+import {
+  spaghettiBolognese,
+  greekSalad,
+  mushroomOmelet,
+  syrniki,
+  soupKharcho,
+  braisedPork
+} from '../assets/images'
+
+// Сопоставление ID рецептов с изображениями
+const recipeImages = {
+  1: spaghettiBolognese,
+  2: greekSalad,
+  3: mushroomOmelet,
+  4: syrniki,
+  5: soupKharcho,
+  6: braisedPork
+}
+
+// Получение изображения рецепта по ID
+export const getRecipeImage = (recipeId) => {
+  return recipeImages[recipeId] || greekSalad // греческий салат как fallback
+}
+
 // Форматирование даты
 export const formatDate = (date, locale = 'ru-RU') => {
   return new Date(date).toLocaleDateString(locale)
