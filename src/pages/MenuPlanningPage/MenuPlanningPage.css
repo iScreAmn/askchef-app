@@ -9,4 +9,60 @@
 .page-title {
   margin-bottom: 3.2rem;
   color: #2D3436;
+}
+
+.menu-planning-page {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-height: 0; /* Позволяет flex элементу сжиматься */
+}
+
+.menu-planning-page-header {
+  text-align: center;
+  padding: 2rem 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 3.2rem; */
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.page-subtitle {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.menu-planning-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Предотвращает выход за границы */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .menu-planning-page {
+    padding: 1.6rem;
+  }
+  
+  .page-header {
+    padding: 1.6rem 0;
+  }
+  
+  .page-title {
+    font-size: 2.8rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1.4rem;
+  }
 } 
