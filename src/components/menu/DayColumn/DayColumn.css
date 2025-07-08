@@ -1,0 +1,71 @@
+.day-column {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 1.6rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid transparent;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.day-column:hover {
+  /* transform: translateY(-2px); */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-color);
+}
+
+/* Заголовок дня */
+.day-header {
+  text-align: center;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 1.6rem;
+}
+
+.day-name {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.day-date {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Контейнер приемов пищи */
+.day-meals {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  flex: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .day-column {
+    padding: 1.2rem;
+    min-height: 400px;
+  }
+  
+  .day-header {
+    padding-bottom: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .day-name {
+    font-size: 1.6rem;
+  }
+  
+  .day-date {
+    font-size: 1.2rem;
+  }
+  
+  .day-meals {
+    gap: 1rem;
+  }
+} 

@@ -1,0 +1,211 @@
+.meal-slot {
+  background: var(--surface-color);
+  border: 2px dashed var(--border-light);
+  border-radius: 8px;
+  padding: 1.2rem;
+  min-height: 120px;
+  transition: all 0.2s ease;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.meal-slot:hover {
+  border-color: var(--primary-color);
+  background: rgba(255, 107, 53, 0.05);
+}
+
+.meal-slot.drag-over {
+  border-color: var(--primary-color);
+  background: rgba(255, 107, 53, 0.1);
+  border-style: solid;
+  transform: scale(1.02);
+}
+
+/* Заголовок времени приема пищи */
+.meal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.meal-icon {
+  font-size: 1.6rem;
+}
+
+.meal-name {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.recipe-count {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Контейнер рецептов */
+.meal-recipes {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Карточка рецепта */
+.meal-recipe-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.meal-recipe-card:hover {
+  background: var(--primary-light);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.recipe-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.recipe-title {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recipe-time {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.recipe-time svg {
+  font-size: 1.2rem;
+}
+
+/* Кнопка удаления */
+.remove-recipe-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-recipe-btn:hover {
+  color: #FF4757;
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.remove-recipe-btn svg {
+  font-size: 1.4rem;
+}
+
+/* Пустой слот */
+.empty-meal-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  flex: 1;
+  min-height: 60px;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.meal-slot:hover .empty-meal-slot {
+  color: var(--primary-color);
+}
+
+.add-icon {
+  font-size: 2rem;
+  opacity: 0.6;
+}
+
+.meal-slot:hover .add-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.add-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .meal-slot {
+    padding: 1rem;
+    min-height: 100px;
+  }
+  
+  .meal-header {
+    gap: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+  
+  .meal-icon {
+    font-size: 1.4rem;
+  }
+  
+  .meal-name {
+    font-size: 1.3rem;
+  }
+  
+  .recipe-count {
+    font-size: 1.1rem;
+  }
+  
+  .meal-recipe-card {
+    padding: 0.6rem;
+  }
+  
+  .recipe-title {
+    font-size: 1.2rem;
+  }
+  
+  .recipe-time {
+    font-size: 1rem;
+  }
+  
+  .empty-meal-slot {
+    min-height: 50px;
+    gap: 0.6rem;
+  }
+  
+  .add-icon {
+    font-size: 1.8rem;
+  }
+  
+  .add-text {
+    font-size: 1.1rem;
+  }
+} 
