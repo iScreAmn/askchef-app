@@ -4,7 +4,7 @@ import { FiPlus, FiClock, FiX } from 'react-icons/fi'
 import { useMenuStore } from '../../../store/menuStore'
 import './MealSlot.css'
 
-const MealSlot = ({ dayKey, mealType, mealName }) => {
+const MealSlot = ({ dayKey, mealType, mealName, onAddRecipe }) => {
   const { t } = useTranslation()
   const [isDragOver, setIsDragOver] = useState(false)
   
@@ -45,6 +45,12 @@ const MealSlot = ({ dayKey, mealType, mealName }) => {
     removeRecipeFromMeal(dayKey, mealType, recipeId)
   }
 
+  const handleAddRecipeClick = () => {
+    if (onAddRecipe) {
+      onAddRecipe(dayKey, mealType)
+    }
+  }
+
   // Получаем иконку для времени приема пищи
   const getMealIcon = () => {
     switch (mealType) {
@@ -57,7 +63,7 @@ const MealSlot = ({ dayKey, mealType, mealName }) => {
 
   return (
     <div 
-      className={`meal-slot ${isDragOver ? 'drag-over' : ''}`}
+      className={`meal-slot ${isDragOver ? 'drag-over' : ''} ${recipes.length === 0 ? 'empty' : ''}`}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
@@ -94,12 +100,16 @@ const MealSlot = ({ dayKey, mealType, mealName }) => {
             </div>
           ))
         ) : (
-          <div className="empty-meal-slot">
+          <button 
+            className="empty-meal-slot clickable" 
+            onClick={handleAddRecipeClick}
+            title={t('menu.addRecipe')}
+          >
             <FiPlus className="add-icon" />
             <span className="add-text">
               {t('menu.addRecipe')}
             </span>
-          </div>
+          </button>
         )}
       </div>
     </div>
