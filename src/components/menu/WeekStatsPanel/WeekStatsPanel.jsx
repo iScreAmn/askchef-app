@@ -250,9 +250,9 @@ const WeekStatsPanel = ({ isExpanded = false, onToggleExpanded }) => {
               <div className="info-item">
                 <FiTrendingUp className="info-icon" />
                 <span>
-                  {weekStats.difficulties.easy} {t('recipes.difficulty.easy')}, 
-                  {weekStats.difficulties.medium} {t('recipes.difficulty.medium')}, 
-                  {weekStats.difficulties.hard} {t('recipes.difficulty.hard')}
+                                  {weekStats.difficulties.easy} {t('recipes.difficultyLevels.easy')},
+                {weekStats.difficulties.medium} {t('recipes.difficultyLevels.medium')},
+                {weekStats.difficulties.hard} {t('recipes.difficultyLevels.hard')}
                 </span>
               </div>
             )}

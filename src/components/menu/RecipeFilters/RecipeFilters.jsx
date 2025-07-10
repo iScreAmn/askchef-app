@@ -147,7 +147,7 @@ const RecipeFilters = ({
                 <option value="all">{t('recipes.allDifficulties')}</option>
                 {difficulties.map(diff => (
                   <option key={diff} value={diff}>
-                    {t(`recipes.difficulty.${diff}`)}
+                    {t(`recipes.difficultyLevels.${diff}`)}
                   </option>
                 ))}
               </select>

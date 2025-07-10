@@ -158,7 +158,7 @@ const RecipePickerModal = ({ isOpen, onClose, dayKey, mealType }) => {
                       )}
                       {recipe.difficulty && (
                         <span className="recipe-difficulty">
-                          {t(`recipes.difficulty.${recipe.difficulty}`)}
+                          {t(`recipes.difficultyLevels.${recipe.difficulty}`)}
                         </span>
                       )}
                     </div>
