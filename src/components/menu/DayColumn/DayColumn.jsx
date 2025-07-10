@@ -1,11 +1,15 @@
 import { useTranslation } from 'react-i18next'
-import { useMenuStore } from '../../../store/menuStore'
 import MealSlot from '../MealSlot/MealSlot'
 import './DayColumn.css'
 
-const DayColumn = ({ dayKey, dayName, date }) => {
+const DayColumn = ({ dayKey, dayName, date, onAddRecipe }) => {
   const { t } = useTranslation()
-  const { mealTypes } = useMenuStore()
+  
+  const mealTypes = [
+    { key: 'breakfast', name: t('menu.breakfast') },
+    { key: 'lunch', name: t('menu.lunch') },
+    { key: 'dinner', name: t('menu.dinner') }
+  ]
 
   return (
     <div className="day-column">
@@ -15,12 +19,13 @@ const DayColumn = ({ dayKey, dayName, date }) => {
       </div>
       
       <div className="day-meals">
-        {mealTypes.map(mealType => (
-          <MealSlot 
-            key={mealType}
+        {mealTypes.map(meal => (
+          <MealSlot
+            key={meal.key}
             dayKey={dayKey}
-            mealType={mealType}
-            mealName={t(`menu.${mealType}`)}
+            mealType={meal.key}
+            mealName={meal.name}
+            onAddRecipe={onAddRecipe}
           />
         ))}
       </div>
