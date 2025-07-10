@@ -4,35 +4,37 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 2rem;
-  backdrop-filter: blur(4px);
+  padding: 1rem;
 }
 
 .modal-content {
   background: var(--background-primary);
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  width: 100%;
-  animation: modalSlideIn 0.3s ease-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
 }
 
-.modal-content--sm {
+.modal-content.small {
+  width: 100%;
   max-width: 400px;
 }
 
-.modal-content--md {
+.modal-content.medium {
+  width: 100%;
   max-width: 600px;
 }
 
-.modal-content--lg {
+.modal-content.large {
+  width: 100%;
   max-width: 800px;
 }
 
@@ -40,82 +42,54 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2.4rem 2.4rem 0 2.4rem;
-  border-bottom: 1px solid var(--border-light);
-  margin-bottom: 2.4rem;
-  padding-bottom: 2.4rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .modal-title {
   margin: 0;
-  font-size: 2.4rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--color-text);
 }
 
-.modal-close-button {
+.modal-close {
   background: none;
   border: none;
+  font-size: 1.5rem;
   cursor: pointer;
-  padding: 0.8rem;
-  color: var(--text-secondary);
-  transition: all 0.2s ease;
-  border-radius: 8px;
+  color: var(--color-text-secondary);
+  transition: color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
-.modal-close-button:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-}
-
-.modal-close-button svg {
-  font-size: 2.4rem;
+.modal-close:hover {
+  color: var(--color-text);
+  background-color: var(--color-background-secondary);
 }
 
 .modal-body {
-  padding: 0 2.4rem 2.4rem 2.4rem;
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
 }
 
-/* Анимация появления */
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Адаптивность */
 @media (max-width: 768px) {
   .modal-overlay {
-    padding: 1rem;
+    padding: 0.5rem;
   }
-
+  
   .modal-content {
-    border-radius: 12px;
+    max-height: 95vh;
   }
-
-  .modal-header {
-    padding: 2rem 2rem 0 2rem;
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-  }
-
-  .modal-title {
-    font-size: 2rem;
-  }
-
+  
+  .modal-header,
   .modal-body {
-    padding: 0 2rem 2rem 2rem;
-  }
-
-  .modal-close-button svg {
-    font-size: 2rem;
+    padding: 1rem;
   }
 } 
