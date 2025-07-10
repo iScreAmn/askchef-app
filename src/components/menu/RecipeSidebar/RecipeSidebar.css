@@ -24,6 +24,7 @@
   right: 0;
   width: 400px;
   height: 100vh;
+  margin-top: 60px;
   background: var(--background-primary);
   border-left: 1px solid var(--border-light);
   z-index: 1000;
