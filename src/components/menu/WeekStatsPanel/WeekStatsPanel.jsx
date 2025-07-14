@@ -79,6 +79,11 @@ const WeekStatsPanel = ({ isExpanded = false, onToggleExpanded }) => {
     return stats
   }, [weekMenu])
 
+  const averageCookingTime = useMemo(() => {
+    if (weekStats.totalRecipes === 0) return 0
+    return Math.round(weekStats.totalCookingTime / weekStats.totalRecipes)
+  }, [weekStats.totalRecipes, weekStats.totalCookingTime])
+
   const getCompletionPercentage = () => {
     const totalSlots = 21 // 7 дней × 3 приема пищи
     const filledSlots = totalSlots - weekStats.missingMeals
@@ -105,11 +110,8 @@ const WeekStatsPanel = ({ isExpanded = false, onToggleExpanded }) => {
   }
 
   const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('ru-RU', {
-      style: 'currency',
-      currency: 'RUB',
-      minimumFractionDigits: 0
-    }).format(amount)
+    // Форматируем число и добавляем символ лари вручную
+    return `${new Intl.NumberFormat('en-US').format(amount)} ₾`
   }
 
   if (!isExpanded) {
@@ -182,8 +184,8 @@ const WeekStatsPanel = ({ isExpanded = false, onToggleExpanded }) => {
               <FiClock />
             </div>
             <div className="stat-info">
-              <span className="stat-value">{formatTime(weekStats.totalCookingTime)}</span>
-              <span className="stat-label">{t('menu.cookingTime')}</span>
+              <span className="stat-value">{formatTime(averageCookingTime)}</span>
+              <span className="stat-label">{t('menu.avgCookingTime')}</span>
             </div>
           </div>
 
@@ -199,7 +201,7 @@ const WeekStatsPanel = ({ isExpanded = false, onToggleExpanded }) => {
 
           <div className="stat-card">
             <div className="stat-icon-wrapper cost">
-              <FiDollarSign />
+              <span>₾</span>
             </div>
             <div className="stat-info">
               <span className="stat-value">{formatCurrency(weekStats.estimatedCost)}</span>

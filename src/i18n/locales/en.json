@@ -26,6 +26,7 @@
     "showStats": "Show Statistics",
     "hideStats": "Hide Statistics",
     "cookingTime": "Cooking Time",
+    "avgCookingTime": "Avg. cooking time",
     "servings": "Servings",
     "estimatedCost": "Estimated Cost",
     "weekCompletion": "Week Completion",
