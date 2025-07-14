@@ -1,0 +1,378 @@
+{
+  "menu": {
+    "weeklyMenu": "Weekly Menu",
+    "weeklyMenuDescription": "Plan your meals for each day of the week",
+    "addRecipe": "Add Recipe",
+    "addToMeal": "Add to Meal",
+    "selectMealTime": "Select Meal Time",
+    "removeRecipe": "Remove Recipe",
+    "previousWeek": "Previous Week",
+    "nextWeek": "Next Week",
+    "dragInstruction": "Drag recipe to the desired slot or use the add button",
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "monday": "Monday",
+    "tuesday": "Tuesday", 
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "shoppingList": "Shopping List",
+    "generateShoppingList": "Generate Shopping List",
+    "shoppingListGenerated": "Shopping list generated from weekly menu!",
+    "weekStats": "Week Statistics",
+    "showStats": "Show Statistics",
+    "hideStats": "Hide Statistics",
+    "cookingTime": "Cooking Time",
+    "servings": "Servings",
+    "estimatedCost": "Estimated Cost",
+    "weekCompletion": "Week Completion",
+    "daysCompleted": "days completed",
+    "missingMeals": "missing meals",
+    "mealDistribution": "Meal Distribution",
+    "popularCategory": "Popular Category",
+    "templates": "Templates",
+    "weekTemplates": "Week Templates",
+    "templateDescription": "Save successful week plans and reuse them",
+    "saveAsTemplate": "Save as Template",
+    "createTemplate": "Create Template",
+    "editTemplate": "Edit Template",
+    "loadTemplate": "Load Template",
+    "deleteTemplate": "Delete Template",
+    "confirmLoadTemplate": "Load template? Current menu will be replaced.",
+    "confirmDeleteTemplate": "Delete template? This action cannot be undone.",
+    "templateName": "Template Name",
+    "templateNamePlaceholder": "e.g.: Healthy Diet",
+    "templateDescriptionPlaceholder": "Brief template description...",
+    "noTemplates": "No saved templates",
+    "noTemplatesDescription": "Create your first week template for quick planning",
+    "createFirstTemplate": "Create First Template",
+    "needRecipesToSave": "Add recipes to menu to save template",
+    "saveCurrentWeek": "Save current week as template",
+    "filledMeals": "filled meals",
+    "recipeAdded": "Recipe Added Successfully!",
+    "recipeAddedSuccess": "Recipe Added!",
+    "addedTo": "added to",
+    "excellent": "Great!"
+  },
+
+  "recipes": {
+    "recipes": "Recipes",
+    "searchRecipes": "Search recipes...",
+    "noRecipes": "No recipes found",
+    "mealType": "Meal Type",
+    "allMealTypes": "All Meal Types",
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "category": "Category",
+    "allCategories": "All Categories",
+    "difficulty": "Difficulty",
+    "allDifficulties": "Any Difficulty",
+    "maxCookingTime": "Max Cooking Time",
+    "minRating": "Min Rating",
+    "anyRating": "Any Rating",
+    "dietaryRestrictions": "Dietary Restrictions",
+    "excludeIngredients": "Exclude Ingredients",
+    "selectIngredient": "Select Ingredient",
+    "filters": "Filters",
+    "clearFilters": "Clear Filters",
+    "showFilters": "Show Filters",
+    "hideFilters": "Hide Filters",
+    "minutes": "min",
+    "servings": "servings",
+    "difficultyEasy": "Easy",
+    "difficultyMedium": "Medium",
+    "difficultyHard": "Hard",
+    "notFound": "Recipe not found",
+    "backToRecipes": "Back to Recipes",
+    "inList": "In List",
+    "addToList": "Add to List",
+    "addToMenu": "Add to Menu",
+    "ingredients": "Ingredients",
+    "instructions": "Instructions",
+    "tips": "Tips",
+    "tags": "Tags",
+    "difficultyLevels": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "dietary": {
+      "vegetarian": "Vegetarian",
+      "vegan": "Vegan",
+      "glutenFree": "Gluten Free",
+      "dairyFree": "Dairy Free",
+      "lowCarb": "Low Carb"
+    },
+    "kharcho": {
+      "tips": "For authentic taste, use Georgian tkemali sauce. If unavailable, substitute with plum sauce mixed with garlic and herbs."
+    },
+    "braisedPork": {
+      "tips": "For best results, marinate the pork overnight. Cook on low heat for tender, juicy meat."
+    },
+    "categories": {
+      "итальянская кухня": "Italian Cuisine",
+      "греческая кухня": "Greek Cuisine",
+      "европейская кухня": "European Cuisine",
+      "русская кухня": "Russian Cuisine",
+      "грузинская кухня": "Georgian Cuisine"
+    }
+  },
+
+  "navigation": {
+    "home": "Home",
+    "recipes": "Recipes", 
+    "menu": "Menu",
+    "shopping": "Shopping",
+    "profile": "Profile"
+  },
+
+  "home": {
+    "title": "Welcome to AskChef",
+    "subtitle": "Your personal culinary assistant for meal planning and recipe management",
+    "getStarted": "Get Started",
+    "viewRecipes": "View Recipes",
+    "featuresTitle": "Features",
+    "features": {
+      "menuPlanning": {
+        "title": "Weekly Menu Planning",
+        "description": "Plan your meals for the entire week with drag-and-drop functionality"
+      },
+      "recipeDatabase": {
+        "title": "Recipe Database",
+        "description": "Browse our collection of delicious and diverse recipes"
+      },
+      "shoppingList": {
+        "title": "Shopping Lists",
+        "description": "Automatically generate shopping lists from your menu plans"
+      },
+      "aiAssistant": {
+        "title": "AI Assistant",
+        "description": "Get personalized recipe recommendations and cooking tips"
+      }
+    }
+  },
+
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password"
+  },
+
+  "profile": {
+    "settings": "Settings",
+    "language": "Language",
+    "languageDescription": "Choose your preferred language",
+    "theme": "Theme",
+    "themeDescription": "Choose light or dark theme for the interface",
+    "lightTheme": "Light Theme",
+    "darkTheme": "Dark Theme",
+    "toggleTheme": "Toggle theme",
+    "accountInfo": "Account Information",
+    "inDevelopment": "This section is under development"
+  },
+
+  "shopping": {
+    "createCustomList": "Create Custom List",
+    "listName": "List Name",
+    "listNamePlaceholder": "Enter list name...",
+    "selectedRecipes": "Selected Recipes",
+    "removeRecipe": "Remove Recipe",
+    "clearSelections": "Clear Selections",
+    "selectAll": "Select All",
+    "clearList": "Clear List",
+    "shoppingList": "Shopping List",
+    "removeIngredient": "Remove Ingredient",
+    "customLists": "Custom Lists",
+    "removeList": "Remove List",
+    "saveEdit": "Save Edit",
+    "cancelEdit": "Cancel Edit",
+    "editDisabledChecked": "Cannot edit checked item",
+    "editItem": "Edit Item",
+    "removeItem": "Remove Item",
+    "addItemPlaceholder": "Add new item...",
+    "addItem": "Add Item",
+    "categories": {
+      "vegetables": "Vegetables",
+      "meat": "Meat",
+      "dairy": "Dairy",
+      "grains": "Grains",
+      "herbs": "Herbs",
+      "spices": "Spices",
+      "other": "Other"
+    }
+  },
+
+  "common": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "back": "Back"
+  },
+
+  "footer": {
+    "allRightsReserved": "All rights reserved"
+  },
+
+  "units": {
+    "г": "g",
+    "шт": "pcs",
+    "ст.л.": "tbsp",
+    "ч.л.": "tsp", 
+    "мл": "ml",
+    "л": "l",
+    "кг": "kg",
+    "зубчика": "cloves",
+    "по вкусу": "to taste",
+    "бутылка": "bottle"
+  },
+
+  "recipeData": {
+    "1": {
+      "title": "Spaghetti Bolognese",
+      "description": "Classic Italian pasta with meat sauce",
+      "ingredients": [
+        "Spaghetti",
+        "Ground beef",
+        "Onion",
+        "Carrot", 
+        "Canned tomatoes",
+        "Garlic",
+        "Olive oil",
+        "Salt",
+        "Black pepper"
+      ],
+      "instructions": [
+        "Cook spaghetti according to package instructions",
+        "Sauté onion and carrot in olive oil",
+        "Add ground beef and cook until done",
+        "Add tomatoes and simmer for 20 minutes",
+        "Mix with cooked spaghetti and serve"
+      ],
+      "tags": ["italian cuisine", "pasta", "meat"]
+    },
+    "2": {
+      "title": "Greek Salad",
+      "description": "Fresh salad with vegetables and feta cheese",
+      "ingredients": [
+        "Tomatoes",
+        "Cucumbers",
+        "Bell pepper",
+        "Red onion",
+        "Feta cheese",
+        "Olives",
+        "Olive oil",
+        "Wine vinegar",
+        "Oregano"
+      ],
+      "instructions": [
+        "Cut vegetables into large pieces",
+        "Add feta cheese and olives",
+        "Dress with oil, vinegar and oregano",
+        "Mix and serve"
+      ],
+      "tags": ["salad", "greek cuisine", "vegetarian"]
+    },
+    "3": {
+      "title": "Mushroom Omelet",
+      "description": "Tender omelet with mushrooms for breakfast",
+      "ingredients": [
+        "Eggs",
+        "Milk",
+        "Mushrooms",
+        "Butter",
+        "Salt",
+        "Black pepper",
+        "Fresh herbs"
+      ],
+      "instructions": [
+        "Sauté sliced mushrooms in butter",
+        "Beat eggs with milk, salt and pepper",
+        "Pour egg mixture into pan with mushrooms",
+        "Cook on low heat until done",
+        "Serve with fresh herbs"
+      ],
+      "tags": ["breakfast", "eggs", "mushrooms"]
+    },
+    "4": {
+      "title": "Cottage Cheese Pancakes",
+      "description": "Classic cottage cheese pancakes for breakfast",
+      "ingredients": [
+        "Cottage cheese",
+        "Chicken egg",
+        "Sugar",
+        "Wheat flour"
+      ],
+      "instructions": [
+        "Put all the cottage cheese in a small pot and mash it with a fork so that there are no large lumps left. Break the eggs into it, add sugar and mix everything thoroughly.",
+        "Add flour to the cottage cheese and mix thoroughly. As a result, you should get a homogeneous mass from which you can form pancakes.",
+        "Put the pan on medium heat.",
+        "Sprinkle some flour on a plate. Form several small balls from the cottage cheese mass, roll them in flour and flatten them into small pancakes.",
+        "Fry the pancakes for 1-2 minutes until golden brown. Then flip them to the other side and also fry until golden."
+      ],
+      "tags": ["breakfast", "cottage cheese", "pancakes"]
+    },
+    "5": {
+      "title": "Kharcho Soup",
+      "description": "Traditional Georgian soup with beef and rice",
+      "ingredients": [
+        "Onions",
+        "Garlic",
+        "Rice",
+        "Tomatoes",
+        "Beef",
+        "Cilantro",
+        "Parsley",
+        "Dill",
+        "Spices"
+      ],
+      "instructions": [
+        "Clean the meat from bones. Pour 2-2.5 liters of cold water into a pot, add meat and bones and put on fire.",
+        "When the water boils, carefully remove the foam and reduce heat so that the water bubbles slightly. Leave to cook for an hour and a half. Half an hour before the end of cooking, you can add parsley or celery root to the broth and salt to taste.",
+        "Meanwhile, finely chop the onion and fry it in vegetable oil over low heat so that the onion remains soft.",
+        "As soon as the onion begins to turn golden, add the meat from the broth to it and fry for about 5 minutes.",
+        "Then add a couple of tablespoons of broth and simmer under a closed lid for 15 minutes.",
+        "While the meat and onions are stewing, prepare the tomatoes",
+        "Send the contents of the pan to the broth, which is already on the stove again and is about to boil.",
+        "Add rice to the pot contents and continue cooking.",
+        "Let our not yet finished soup boil for 5 minutes, reduce heat to medium and add spices.",
+        "At the very last stage of cooking, add crushed garlic and finely chopped herbs (dill, parsley and cilantro).",
+        "Let the soup steep under the lid for an hour and you can serve."
+      ],
+      "tags": ["soup", "kharcho", "beef", "georgian cuisine"]
+    },
+    "6": {
+      "title": "Braised Pork",
+      "description": "Tender braised pork in sour cream sauce with vegetables",
+      "ingredients": [
+        "Pork",
+        "Onions",
+        "Ground black pepper",
+        "Salt",
+        "Vegetable oil",
+        "Parsley",
+        "Dill",
+        "Garlic",
+        "Sour cream",
+        "Tomato paste",
+        "Rye flour"
+      ],
+      "instructions": [
+        "Cut the meat, fry it, transfer to a braising dish.",
+        "Fry the chopped onion and add to the meat.",
+        "Pour water (or meat broth), salt, pepper. Braise for an hour.",
+        "Dissolve flour in part of the resulting broth. Add to the pot with meat.",
+        "Add tomato paste (you can use ketchup). Braise for 20 minutes.",
+        "Add sour cream and bring to a boil. Remove from heat.",
+        "Add herbs and garlic."
+      ],
+      "tags": ["pork", "braised", "sour cream", "meat"]
+    }
+  }
+} 
