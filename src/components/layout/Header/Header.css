@@ -88,12 +88,15 @@
 }
 
 .nav-link {
+  font-size: 1.6rem;
+  font-weight: 500;
   color: var(--header-text);
   text-decoration: none;
-  font-weight: 500;
-  padding: 0.8rem 1.6rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  transition: color 0.2s ease;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  min-width: 100px;
+  text-align: center;
 }
 
 .nav-link--active {
@@ -135,6 +138,17 @@
   align-items: center;
   gap: 0.8rem;
   color: var(--text-secondary);
+}
+
+/* Скрываем пользовательскую информацию и кнопку выхода на десктопе */
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .mobile-only {
+    display: flex;
+  }
 }
 
 .mobile-menu-button {

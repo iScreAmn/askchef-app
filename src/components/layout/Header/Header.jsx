@@ -72,7 +72,7 @@ const Header = () => {
           <div className="user-section">
             {isAuthenticated ? (
               <>
-                <div className="user-info">
+                <div className="user-info mobile-only">
                   <FiUser />
                   <span>{user?.name}</span>
                 </div>
@@ -81,6 +81,7 @@ const Header = () => {
                   size="sm"
                   onClick={handleLogout}
                   icon={<FiLogOut />}
+                  className="mobile-only"
                 >
                   {t('auth.logout')}
                 </Button>

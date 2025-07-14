@@ -242,7 +242,10 @@
     "darkTheme": "Dark Theme",
     "toggleTheme": "Toggle theme",
     "accountInfo": "Account Information",
-    "inDevelopment": "This section is under development"
+    "userName": "User Name",
+    "userNamePlaceholder": "Enter your name",
+    "email": "Email Address",
+    "avatarHint": "Click to change avatar"
   },
 
   "shopping": {
