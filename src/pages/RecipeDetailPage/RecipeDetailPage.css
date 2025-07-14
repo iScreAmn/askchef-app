@@ -159,6 +159,11 @@
 .recipe-actions {
   display: flex;
   gap: 16px;
+  padding-top: 24px;
+}
+
+.recipe-actions > * {
+  flex: 1;
 }
 
 /* Recipe Details */
