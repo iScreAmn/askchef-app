@@ -1,14 +1,18 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { FiSearch, FiFilter, FiPlus, FiCheck, FiX } from 'react-icons/fi'
 import { useMenuStore } from '../../../store/menuStore'
+import { useAuthStore } from '../../../store/authStore'
 import useRecipeTranslations from '../../../hooks/useRecipeTranslations'
 import Modal from '../../ui/Modal/Modal'
 import './RecipePickerModal.css'
 
 const RecipePickerModal = ({ isOpen, onClose, dayKey, mealType }) => {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const { getTranslatedRecipes } = useRecipeTranslations()
+  const { isAuthenticated } = useAuthStore()
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [selectedMealType, setSelectedMealType] = useState(mealType || 'all')
@@ -75,6 +79,12 @@ const RecipePickerModal = ({ isOpen, onClose, dayKey, mealType }) => {
   )].sort()
 
   const handleAddRecipe = (recipe) => {
+    if (!isAuthenticated) {
+      navigate('/menu-auth')
+      onClose()
+      return
+    }
+    
     if (dayKey && mealType && recipe) {
       try {
         addRecipeToMeal(dayKey, mealType, recipe)
@@ -314,7 +324,7 @@ const RecipePickerModal = ({ isOpen, onClose, dayKey, mealType }) => {
                     <div className="recipe-picker-meta">
                       {recipe.cookingTime && (
                         <span className="recipe-time">
-                          {recipe.cookingTime} {t('recipes.minutes')}
+                          {recipe.cookingTime}{t('units.minute')}
                         </span>
                       )}
                       {recipe.difficulty && (

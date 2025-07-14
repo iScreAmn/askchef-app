@@ -104,14 +104,13 @@ const WeekStatsPanel = ({ isExpanded = false, onToggleExpanded }) => {
     const mins = minutes % 60
     
     if (hours > 0) {
-      return `${hours}ч ${mins > 0 ? `${mins}мин` : ''}`
+      return `${hours}${t('units.hour')} ${mins > 0 ? `${mins}${t('units.minute')}` : ''}`
     }
-    return `${mins}мин`
+    return `${mins}${t('units.minute')}`
   }
 
   const formatCurrency = (amount) => {
-    // Форматируем число и добавляем символ лари вручную
-    return `${new Intl.NumberFormat('en-US').format(amount)} ₾`
+    return `${new Intl.NumberFormat('en-US').format(amount)} ${t('units.currency')}`
   }
 
   if (!isExpanded) {

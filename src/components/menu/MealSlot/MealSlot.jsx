@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { FiPlus, FiClock, FiX } from 'react-icons/fi'
 import { useMenuStore } from '../../../store/menuStore'
+import { useAuthStore } from '../../../store/authStore'
 import './MealSlot.css'
 
 const MealSlot = ({ dayKey, mealType, mealName, onAddRecipe }) => {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const [isDragOver, setIsDragOver] = useState(false)
   
   const {
@@ -14,6 +17,7 @@ const MealSlot = ({ dayKey, mealType, mealName, onAddRecipe }) => {
     removeRecipeFromMeal
   } = useMenuStore()
   
+  const { isAuthenticated } = useAuthStore()
   const recipes = getMealRecipes(dayKey, mealType)
 
   // Drag and Drop handlers
@@ -31,6 +35,11 @@ const MealSlot = ({ dayKey, mealType, mealName, onAddRecipe }) => {
     e.preventDefault()
     setIsDragOver(false)
     
+    if (!isAuthenticated) {
+      navigate('/menu-auth')
+      return
+    }
+    
     try {
       const recipeData = JSON.parse(e.dataTransfer.getData('text/plain'))
       if (recipeData && recipeData.type === 'recipe') {
@@ -46,6 +55,11 @@ const MealSlot = ({ dayKey, mealType, mealName, onAddRecipe }) => {
   }
 
   const handleAddRecipeClick = () => {
+    if (!isAuthenticated) {
+      navigate('/menu-auth')
+      return
+    }
+    
     if (onAddRecipe) {
       onAddRecipe(dayKey, mealType)
     }
@@ -92,7 +106,7 @@ const MealSlot = ({ dayKey, mealType, mealName, onAddRecipe }) => {
                   {recipe.cookingTime && (
                     <div className="recipe-time">
                       <FiClock />
-                      <span>{recipe.cookingTime}мин</span>
+                      <span>{recipe.cookingTime}{t('units.minute')}</span>
                     </div>
                   )}
                 </div>

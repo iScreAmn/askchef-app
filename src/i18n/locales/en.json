@@ -221,6 +221,17 @@
     "confirmPassword": "Confirm Password"
   },
 
+  "menuGuard": {
+    "title": "Menu Planning",
+    "subtitle": "Registration or login is required to access weekly menu planning",
+    "imageTitle": "Organize Your Meals",
+    "imageDescription": "Create weekly meal plans, share recipes, and automatically generate shopping lists",
+    "loginToAccess": "Login to Menu",
+    "registerToAccess": "Register for Access",
+    "footerText": "Want to browse our recipes first?",
+    "backToHome": "Back to Home"
+  },
+
   "profile": {
     "settings": "Settings",
     "language": "Language",
@@ -285,7 +296,10 @@
     "кг": "kg",
     "зубчика": "cloves",
     "по вкусу": "to taste",
-    "бутылка": "bottle"
+    "бутылка": "bottle",
+    "hour": "h",
+    "minute": "min",
+    "currency": "₾"
   },
 
   "recipeData": {
