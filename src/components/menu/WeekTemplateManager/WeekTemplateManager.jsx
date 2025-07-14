@@ -6,7 +6,7 @@ import Modal from '../../ui/Modal/Modal'
 import './WeekTemplateManager.css'
 
 const WeekTemplateManager = ({ isOpen, onClose }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [showCreateModal, setShowCreateModal] = useState(false)
   const [editingTemplate, setEditingTemplate] = useState(null)
   const [templateName, setTemplateName] = useState('')
@@ -138,7 +138,7 @@ const WeekTemplateManager = ({ isOpen, onClose }) => {
                             {stats.meals} {t('menu.filledMeals')}
                           </span>
                           <span className="stat-item">
-                            {new Date(template.createdAt).toLocaleDateString('ru-RU')}
+                            {new Date(template.createdAt).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'en-US')}
                           </span>
                         </div>
                       </div>

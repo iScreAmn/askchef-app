@@ -12,7 +12,7 @@ import WeekTemplateManager from '../WeekTemplateManager/WeekTemplateManager'
 import './WeeklyCalendar.css'
 
 const WeeklyCalendar = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isPickerModalOpen, setIsPickerModalOpen] = useState(false)
   const [selectedMealSlot, setSelectedMealSlot] = useState({ dayKey: null, mealType: null })
@@ -52,7 +52,7 @@ const WeeklyCalendar = () => {
         key: days[i],
         date,
         dayName: t(`menu.${days[i]}`),
-        formatted: date.toLocaleDateString('ru-RU', { 
+        formatted: date.toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'en-US', { 
           day: 'numeric', 
           month: 'short' 
         })
@@ -114,12 +114,12 @@ const WeeklyCalendar = () => {
     const endDate = new Date(currentWeekStart)
     endDate.setDate(currentWeekStart.getDate() + 6)
     
-    const startFormatted = currentWeekStart.toLocaleDateString('ru-RU', {
+    const startFormatted = currentWeekStart.toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'en-US', {
       day: 'numeric',
       month: 'short'
     })
     
-    const endFormatted = endDate.toLocaleDateString('ru-RU', {
+    const endFormatted = endDate.toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'en-US', {
       day: 'numeric', 
       month: 'short'
     })

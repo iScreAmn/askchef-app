@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { FiClock, FiUsers, FiDollarSign, FiTrendingUp, FiPieChart, FiInfo } from 'react-icons/fi'
+import { FiClock, FiUsers, FiDollarSign, FiTrendingUp, FiPieChart, FiInfo, FiChevronDown, FiChevronUp } from 'react-icons/fi'
 import { useMenuStore } from '../../../store/menuStore'
 import './WeekStatsPanel.css'
 
@@ -115,16 +115,21 @@ const WeekStatsPanel = ({ isExpanded = false, onToggleExpanded }) => {
   if (!isExpanded) {
     return (
       <div className="week-stats-panel collapsed">
-        <button 
-          onClick={onToggleExpanded}
-          className="stats-toggle-btn"
-          title={t('menu.showStats')}
-        >
-          <FiPieChart />
-          <span className="stats-summary">
-            {weekStats.totalRecipes} {t('recipes.recipes')} • {getCompletionPercentage()}%
-          </span>
-        </button>
+        <div className="stats-header">
+          <div className="stats-title">
+            <FiPieChart className="stats-icon" />
+            <span className="stats-summary">
+              {weekStats.totalRecipes} {t('recipes.recipes')} • {getCompletionPercentage()}%
+            </span>
+          </div>
+          <button 
+            onClick={onToggleExpanded}
+            className="collapse-btn"
+            title={t('menu.showStats')}
+          >
+            <FiChevronDown />
+          </button>
+        </div>
       </div>
     )
   }
@@ -141,7 +146,7 @@ const WeekStatsPanel = ({ isExpanded = false, onToggleExpanded }) => {
           className="collapse-btn"
           title={t('menu.hideStats')}
         >
-          ×
+          <FiChevronUp />
         </button>
       </div>
 
