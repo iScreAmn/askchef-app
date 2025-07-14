@@ -6,6 +6,7 @@ import { useAuthStore } from '../../store/authStore'
 import LanguageSwitcher from '../../components/ui/LanguageSwitcher/LanguageSwitcher'
 import ThemeSwitcher from '../../components/ui/ThemeSwitcher/ThemeSwitcher'
 import Button from '../../components/ui/Button/Button'
+import ConfirmationModal from '../../components/ui/ConfirmationModal/ConfirmationModal'
 import './ProfilePage.css'
 
 const ProfilePage = () => {
@@ -14,6 +15,7 @@ const ProfilePage = () => {
   const { user, logout, updateProfile } = useAuthStore()
   const [isEditingName, setIsEditingName] = useState(false)
   const [editedName, setEditedName] = useState(user?.name || '')
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false)
   const fileInputRef = useRef(null)
 
   const handleNameEdit = () => {
@@ -48,8 +50,13 @@ const ProfilePage = () => {
     }
   }
 
-  const handleLogout = () => {
+  const handleLogoutClick = () => {
+    setIsLogoutModalOpen(true)
+  }
+
+  const handleConfirmLogout = () => {
     logout()
+    setIsLogoutModalOpen(false)
     navigate('/')
   }
 
@@ -153,7 +160,7 @@ const ProfilePage = () => {
           <div className="logout-section">
             <Button
               variant="outline"
-              onClick={handleLogout}
+              onClick={handleLogoutClick}
               icon={<FiLogOut />}
               className="logout-button"
             >
@@ -161,6 +168,14 @@ const ProfilePage = () => {
             </Button>
           </div>
         </div>
+
+        <ConfirmationModal
+          isOpen={isLogoutModalOpen}
+          onClose={() => setIsLogoutModalOpen(false)}
+          onConfirm={handleConfirmLogout}
+          title={t('profile.logoutConfirmation.title')}
+          message={t('profile.logoutConfirmation.message')}
+        />
       </div>
     </div>
   )

@@ -245,7 +245,11 @@
     "userName": "User Name",
     "userNamePlaceholder": "Enter your name",
     "email": "Email Address",
-    "avatarHint": "Click to change avatar"
+    "avatarHint": "Click to change avatar",
+    "logoutConfirmation": {
+      "title": "Logout Confirmation",
+      "message": "Are you sure you want to log out of your account?"
+    }
   },
 
   "shopping": {
