@@ -31,6 +31,16 @@
   background: var(--input-border);
 }
 
+.stats-header.clickable {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.stats-header.clickable:hover {
+  /* background: var(--color-background); */
+}
+
 .stats-title {
   display: flex;
   align-items: center;

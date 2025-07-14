@@ -15,6 +15,16 @@
   background: var(--input-border);
 }
 
+.filters-header.clickable {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.filters-header.clickable:hover {
+  /* background: var(--color-background); */
+}
+
 .filters-title {
   display: flex;
   align-items: center;

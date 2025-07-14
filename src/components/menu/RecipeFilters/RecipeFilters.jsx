@@ -72,7 +72,11 @@ const RecipeFilters = ({
 
   return (
     <div className="recipe-filters">
-      <div className="filters-header">
+      <div 
+        className="filters-header clickable"
+        onClick={onToggleExpanded}
+        title={isExpanded ? t('recipes.hideFilters') : t('recipes.showFilters')}
+      >
         <div className="filters-title">
           <FiFilter className="filter-icon" />
           <span>{t('recipes.filters')}</span>
@@ -85,14 +89,23 @@ const RecipeFilters = ({
         
         <div className="filters-controls">
           {hasActiveFilters() && (
-            <button onClick={clearAllFilters} className="clear-filters-btn">
+            <button 
+              onClick={(e) => {
+                e.stopPropagation()
+                clearAllFilters()
+              }} 
+              className="clear-filters-btn"
+            >
               <FiX />
               {t('recipes.clearFilters')}
             </button>
           )}
           
           <button 
-            onClick={onToggleExpanded}
+            onClick={(e) => {
+              e.stopPropagation()
+              onToggleExpanded()
+            }}
             className="toggle-filters-btn"
             aria-label={isExpanded ? t('recipes.hideFilters') : t('recipes.showFilters')}
           >

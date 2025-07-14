@@ -115,7 +115,11 @@ const WeekStatsPanel = ({ isExpanded = false, onToggleExpanded }) => {
   if (!isExpanded) {
     return (
       <div className="week-stats-panel collapsed">
-        <div className="stats-header">
+        <div 
+          className="stats-header clickable"
+          onClick={onToggleExpanded}
+          title={t('menu.showStats')}
+        >
           <div className="stats-title">
             <FiPieChart className="stats-icon" />
             <span className="stats-summary">
@@ -123,7 +127,10 @@ const WeekStatsPanel = ({ isExpanded = false, onToggleExpanded }) => {
             </span>
           </div>
           <button 
-            onClick={onToggleExpanded}
+            onClick={(e) => {
+              e.stopPropagation()
+              onToggleExpanded()
+            }}
             className="collapse-btn"
             title={t('menu.showStats')}
           >
@@ -136,13 +143,20 @@ const WeekStatsPanel = ({ isExpanded = false, onToggleExpanded }) => {
 
   return (
     <div className="week-stats-panel expanded">
-      <div className="stats-header">
+      <div 
+        className="stats-header clickable"
+        onClick={onToggleExpanded}
+        title={t('menu.hideStats')}
+      >
         <div className="stats-title">
           <FiPieChart className="stats-icon" />
           <h3>{t('menu.weekStats')}</h3>
         </div>
         <button 
-          onClick={onToggleExpanded}
+          onClick={(e) => {
+            e.stopPropagation()
+            onToggleExpanded()
+          }}
           className="collapse-btn"
           title={t('menu.hideStats')}
         >
