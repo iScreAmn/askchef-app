@@ -186,7 +186,7 @@ const RecipeFilters = ({
 
           {/* Диетические ограничения */}
           <div className="filter-group">
-            <label className="filter-label">{t('recipes.dietary')}:</label>
+            <label className="filter-label">{t('recipes.dietaryRestrictions')}:</label>
             <div className="checkbox-group">
               {dietaryOptions.map(option => (
                 <label key={option} className="checkbox-label">

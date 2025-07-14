@@ -66,18 +66,41 @@
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: 6px;
-  padding: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: all 0.2s ease;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-height: 80px;
+  
+  /* Фоновое изображение */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .meal-recipe-card:hover {
-  background: var(--primary-light);
   border-color: var(--primary-color);
   transform: translateY(-1px);
+}
+
+/* Оверлей для лучшей читаемости текста */
+.recipe-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem;
+  transition: background 0.2s ease;
+}
+
+.meal-recipe-card:hover .recipe-overlay {
+  background: rgba(255, 107, 53, 0.85);
 }
 
 .recipe-info {
@@ -88,11 +111,12 @@
 .recipe-title {
   margin: 0 0 0.4rem 0;
   font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--text-primary);
+  font-weight: 600;
+  color: white;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .recipe-time {
@@ -100,7 +124,8 @@
   align-items: center;
   gap: 0.4rem;
   font-size: 1.1rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .recipe-time svg {
@@ -109,11 +134,11 @@
 
 /* Кнопка удаления */
 .remove-recipe-btn {
-  background: none;
+  background: rgba(0, 0, 0, 0.5);
   border: none;
   cursor: pointer;
   padding: 0.4rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.9);
   transition: all 0.2s ease;
   border-radius: 4px;
   display: flex;
@@ -123,7 +148,7 @@
 
 .remove-recipe-btn:hover {
   color: #FF4757;
-  background: rgba(255, 71, 87, 0.1);
+  background: rgba(255, 71, 87, 0.8);
 }
 
 .remove-recipe-btn svg {
@@ -206,6 +231,10 @@
   }
   
   .meal-recipe-card {
+    min-height: 70px;
+  }
+  
+  .recipe-overlay {
     padding: 0.6rem;
   }
   

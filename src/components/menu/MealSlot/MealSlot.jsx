@@ -79,24 +79,32 @@ const MealSlot = ({ dayKey, mealType, mealName, onAddRecipe }) => {
       <div className="meal-recipes">
         {recipes.length > 0 ? (
           recipes.map(recipe => (
-            <div key={recipe.id} className="meal-recipe-card">
-              <div className="recipe-info">
-                <h5 className="recipe-title">{recipe.title}</h5>
-                {recipe.cookingTime && (
-                  <div className="recipe-time">
-                    <FiClock />
-                    <span>{recipe.cookingTime}мин</span>
-                  </div>
-                )}
+            <div 
+              key={recipe.id} 
+              className="meal-recipe-card"
+              style={{
+                backgroundImage: recipe.image ? `url(${recipe.image})` : 'none'
+              }}
+            >
+              <div className="recipe-overlay">
+                <div className="recipe-info">
+                  <h5 className="recipe-title">{recipe.title}</h5>
+                  {recipe.cookingTime && (
+                    <div className="recipe-time">
+                      <FiClock />
+                      <span>{recipe.cookingTime}мин</span>
+                    </div>
+                  )}
+                </div>
+                
+                <button
+                  onClick={() => handleRemoveRecipe(recipe.id)}
+                  className="remove-recipe-btn"
+                  title={t('menu.removeRecipe')}
+                >
+                  <FiX />
+                </button>
               </div>
-              
-              <button
-                onClick={() => handleRemoveRecipe(recipe.id)}
-                className="remove-recipe-btn"
-                title={t('menu.removeRecipe')}
-              >
-                <FiX />
-              </button>
             </div>
           ))
         ) : (

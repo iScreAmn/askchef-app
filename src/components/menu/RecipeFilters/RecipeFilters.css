@@ -12,7 +12,7 @@
   justify-content: space-between;
   padding: 1rem;
   border-bottom: 1px solid var(--color-border);
-  background: var(--color-background);
+  background: var(--input-border);
 }
 
 .filters-title {
@@ -96,7 +96,7 @@
 }
 
 .filter-label {
-  font-size: 0.9rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: var(--color-text);
 }
@@ -106,9 +106,9 @@
   padding: 0.75rem;
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  background: var(--color-background);
+  background: var( --input-border);
   color: var(--color-text);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   transition: border-color 0.2s ease;
 }
 
