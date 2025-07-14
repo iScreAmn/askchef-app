@@ -26,6 +26,7 @@
     "showStats": "Показать статистику",
     "hideStats": "Скрыть статистику",
     "cookingTime": "Время готовки",
+    "avgCookingTime": "Среднее время готовки",
     "servings": "Порции",
     "estimatedCost": "Примерная стоимость",
     "weekCompletion": "Заполнение недели",
@@ -55,7 +56,61 @@
     "recipeAdded": "Рецепт успешно добавлен!",
     "recipeAddedSuccess": "Рецепт добавлен!",
     "addedTo": "добавлен в",
-    "excellent": "Отлично!"
+    "excellent": "Отлично!",
+    "shoppingListCreated": "Список покупок создан!",
+    "shoppingListReady": "готов к использованию",
+    "goToShoppingList": "Перейти к списку"
+  },
+
+  "shopping": {
+    "categories": {
+      "vegetables": "Овощи",
+      "meat": "Мясо",
+      "dairy": "Молочные продукты", 
+      "grains": "Крупы",
+      "herbs": "Зелень",
+      "spices": "Специи",
+      "other": "Прочее"
+    },
+    "createCustomList": "Создать список",
+    "customLists": "Списки покупок",
+    "listName": "Название списка",
+    "listNamePlaceholder": "Например: Продукты на выходные",
+    "addItemPlaceholder": "Добавить товар...",
+    "addItem": "Добавить",
+    "removeItem": "Удалить товар",
+    "removeList": "Удалить список",
+    "editItem": "Редактировать",
+    "saveEdit": "Сохранить",
+    "cancelEdit": "Отменить",
+    "editDisabledChecked": "Нельзя редактировать отмеченные товары",
+    "selectedRecipes": "Выбранные рецепты",
+    "removeRecipe": "Удалить рецепт",
+    "clearSelections": "Снять отметки",
+    "selectAll": "Отметить все",
+    "clearList": "Очистить список",
+    "clearWeeklyList": "Очистить список из меню",
+    "shoppingList": "Список покупок",
+    "removeIngredient": "Удалить ингредиент",
+    "emptyList": "Список покупок пуст. Добавьте рецепты для создания списка покупок."
+  },
+
+  "navigation": {
+    "home": "Главная",
+    "recipes": "Рецепты",
+    "menu": "Меню",
+    "shopping": "Покупки",
+    "profile": "Профиль"
+  },
+
+  "common": {
+    "save": "Сохранить",
+    "cancel": "Отменить",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "add": "Добавить",
+    "remove": "Удалить",
+    "close": "Закрыть"
   },
 
   "recipes": {

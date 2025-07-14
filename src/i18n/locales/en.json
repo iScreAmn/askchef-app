@@ -55,7 +55,61 @@
     "recipeAdded": "Recipe Added Successfully!",
     "recipeAddedSuccess": "Recipe Added!",
     "addedTo": "added to",
-    "excellent": "Great!"
+    "excellent": "Great!",
+    "shoppingListCreated": "Shopping List Created!",
+    "shoppingListReady": "is ready to use",
+    "goToShoppingList": "Go to Shopping List"
+  },
+
+  "shopping": {
+    "categories": {
+      "vegetables": "Vegetables",
+      "meat": "Meat",
+      "dairy": "Dairy",
+      "grains": "Grains", 
+      "herbs": "Herbs",
+      "spices": "Spices",
+      "other": "Other"
+    },
+    "createCustomList": "Create List",
+    "customLists": "Shopping Lists",
+    "listName": "List Name",
+    "listNamePlaceholder": "e.g.: Weekend Groceries",
+    "addItemPlaceholder": "Add item...",
+    "addItem": "Add Item",
+    "removeItem": "Remove Item",
+    "removeList": "Remove List",
+    "editItem": "Edit",
+    "saveEdit": "Save",
+    "cancelEdit": "Cancel",
+    "editDisabledChecked": "Cannot edit checked items",
+    "selectedRecipes": "Selected Recipes",
+    "removeRecipe": "Remove Recipe",
+    "clearSelections": "Clear Selections",
+    "selectAll": "Select All",
+    "clearList": "Clear List",
+    "clearWeeklyList": "Clear Weekly Menu List",
+    "shoppingList": "Shopping List",
+    "removeIngredient": "Remove Ingredient",
+    "emptyList": "Shopping list is empty. Add recipes to create shopping list."
+  },
+
+  "navigation": {
+    "home": "Home",
+    "recipes": "Recipes", 
+    "menu": "Menu",
+    "shopping": "Shopping",
+    "profile": "Profile"
+  },
+
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel", 
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "remove": "Remove",
+    "close": "Close"
   },
 
   "recipes": {

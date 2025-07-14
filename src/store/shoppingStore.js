@@ -19,6 +19,9 @@ const useShoppingStore = create(
       // Кастомные списки покупок
       customLists: [],
 
+      // Список покупок из недельного меню (отдельно от кастомных)
+      weeklyMenuShoppingList: null,
+
       // Добавить рецепт в список покупок
       addRecipeToList: (recipeId) => {
         set((state) => ({
@@ -153,6 +156,71 @@ const useShoppingStore = create(
         return newList.id
       },
 
+      // Добавить список покупок из недельного меню
+      addWeeklyMenuShoppingList: (shoppingListData) => {
+        const newList = {
+          id: Date.now(),
+          name: shoppingListData.name,
+          description: shoppingListData.description,
+          items: shoppingListData.items.map(item => ({
+            id: Date.now() + Math.random(), // Уникальный ID для каждого элемента
+            name: item.name,
+            amount: item.amount,
+            category: item.category,
+            fromRecipe: item.fromRecipe,
+            checked: false
+          })),
+          createdFrom: 'weeklyMenu',
+          createdAt: new Date().toISOString()
+        }
+        
+        // Сохраняем список отдельно от кастомных списков
+        set(() => ({
+          weeklyMenuShoppingList: newList
+        }))
+        
+        return newList.id
+      },
+
+      // Очистить список покупок из недельного меню
+      clearWeeklyMenuShoppingList: () => {
+        set(() => ({
+          weeklyMenuShoppingList: null
+        }))
+      },
+
+      // Переключить состояние элемента в списке из недельного меню
+      toggleWeeklyMenuShoppingItem: (itemId) => {
+        set((state) => {
+          if (!state.weeklyMenuShoppingList) return state
+          
+          return {
+            weeklyMenuShoppingList: {
+              ...state.weeklyMenuShoppingList,
+              items: state.weeklyMenuShoppingList.items.map(item =>
+                item.id === itemId
+                  ? { ...item, checked: !item.checked }
+                  : item
+              )
+            }
+          }
+        })
+      },
+
+      // Удалить элемент из списка недельного меню
+      removeWeeklyMenuShoppingItem: (itemId) => {
+        set((state) => {
+          if (!state.weeklyMenuShoppingList) return state
+          
+          return {
+            weeklyMenuShoppingList: {
+              ...state.weeklyMenuShoppingList,
+              items: state.weeklyMenuShoppingList.items.filter(item => item.id !== itemId)
+            }
+          }
+        })
+      },
+
       // Удалить кастомный список
       removeCustomList: (listId) => {
         set((state) => ({
@@ -249,7 +317,8 @@ const useShoppingStore = create(
         selectedRecipes: state.selectedRecipes,
         activeRecipes: state.activeRecipes,
         checkedIngredients: state.checkedIngredients,
-        customLists: state.customLists
+        customLists: state.customLists,
+        weeklyMenuShoppingList: state.weeklyMenuShoppingList
       })
     }
   )

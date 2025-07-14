@@ -155,6 +155,125 @@
   transition: all 0.2s ease;
 }
 
+/* Список покупок из недельного меню */
+.weekly-menu-shopping-list {
+  margin-bottom: 4rem;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e8f5e8 100%);
+  border: 2px solid #10b981;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);
+}
+
+.weekly-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #10b981;
+}
+
+.weekly-menu-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.weekly-menu-icon {
+  font-size: 2rem;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.weekly-menu-title h2 {
+  margin: 0;
+  color: #047857;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.clear-weekly-list-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 2px solid #059669;
+  color: #059669;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.clear-weekly-list-button:hover {
+  background: #059669;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.weekly-menu-description {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  border-left: 4px solid #10b981;
+}
+
+.weekly-menu-description p {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #047857;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.weekly-menu-category {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #059669;
+}
+
+.weekly-menu-category .category-header {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.weekly-menu-category .category-header h3 {
+  color: white;
+}
+
+.weekly-menu-category .category-header svg {
+  color: white;
+}
+
+.weekly-menu-item {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+.ingredient-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+}
+
+.ingredient-recipe {
+  font-size: 1.1rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
 /* Removed duplicate hover effect to prevent jerky behavior */
 
 /* Placeholder для drop зоны */
@@ -583,6 +702,14 @@
   justify-content: center !important;
 }
 
+.shopping-list-description {
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  border-left: 3px solid var(--border-light);
+}
+
 /* Список покупок */
 .shopping-list {
   margin-top: 4rem;
@@ -720,6 +847,11 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1.2rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    /* align-items: unset; */
   }
 
   .custom-lists-grid {

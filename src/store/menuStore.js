@@ -357,25 +357,28 @@ export const useMenuStore = create(
           // Конвертируем в массив и группируем по категориям
           const shoppingItems = Array.from(ingredients.values())
           
-          // Сохраняем в localStorage для использования в ShoppingListPage
-          try {
-            const weekPeriod = state.formatWeekKey(state.currentWeekStart)
-            const listName = `Меню на неделю (${weekPeriod})`
-            
-            const shoppingListData = {
-              name: listName,
-              description: `Автоматически сгенерированный список из недельного меню`,
-              items: shoppingItems,
-              isTemplate: false,
-              createdFrom: 'weeklyMenu',
-              createdAt: new Date().toISOString()
+                      // Добавляем список покупок напрямую в shopping store
+            try {
+              const weekPeriod = formatWeekKey(state.currentWeekStart)
+              const listName = `Меню на неделю (${weekPeriod})`
+              
+              const shoppingListData = {
+                name: listName,
+                description: `Автоматически сгенерированный список из недельного меню`,
+                items: shoppingItems,
+                isTemplate: false,
+                createdFrom: 'weeklyMenu',
+                createdAt: new Date().toISOString()
+              }
+              
+              // Используем динамический импорт для избежания циклических зависимостей
+              import('./shoppingStore').then(({ default: useShoppingStore }) => {
+                const { addWeeklyMenuShoppingList } = useShoppingStore.getState()
+                addWeeklyMenuShoppingList(shoppingListData)
+              })
+            } catch (error) {
+              console.error('Ошибка при создании списка покупок:', error)
             }
-            
-            // Сохраняем временно в localStorage для передачи в ShoppingListPage
-            localStorage.setItem('pendingShoppingList', JSON.stringify(shoppingListData))
-          } catch (error) {
-            console.error('Ошибка при создании списка покупок:', error)
-          }
         }
       }),
       {

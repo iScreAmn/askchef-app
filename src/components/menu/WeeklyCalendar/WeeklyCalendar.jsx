@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FiChevronLeft, FiChevronRight, FiPlus, FiShoppingCart, FiBookmark } from 'react-icons/fi'
 import { useMenuStore } from '../../../store/menuStore'
+
 import { mockRecipes } from '../../../data/mockData'
 import DayColumn from '../DayColumn/DayColumn'
 import RecipeSidebar from '../RecipeSidebar/RecipeSidebar'
@@ -9,6 +10,7 @@ import RecipePickerModal from '../RecipePickerModal/RecipePickerModal'
 import RecipeFilters from '../RecipeFilters/RecipeFilters'
 import WeekStatsPanel from '../WeekStatsPanel/WeekStatsPanel'
 import WeekTemplateManager from '../WeekTemplateManager/WeekTemplateManager'
+import ShoppingListSuccessModal from '../ShoppingListSuccessModal/ShoppingListSuccessModal'
 import './WeeklyCalendar.css'
 
 const WeeklyCalendar = () => {
@@ -21,6 +23,8 @@ const WeeklyCalendar = () => {
   const [isTemplateManagerOpen, setIsTemplateManagerOpen] = useState(false)
   const [recipeFilters, setRecipeFilters] = useState({})
   const [currentDayIndex, setCurrentDayIndex] = useState(0) // Индекс первого видимого дня (0-4)
+  const [showShoppingListModal, setShowShoppingListModal] = useState(false)
+  const [generatedListName, setGeneratedListName] = useState('')
   
   const {
     currentWeekStart,
@@ -29,6 +33,7 @@ const WeeklyCalendar = () => {
     goToPreviousWeek,
     generateShoppingListFromWeek
   } = useMenuStore()
+
   
   // Инициализируем текущую неделю при первом рендере
   useEffect(() => {
@@ -141,9 +146,26 @@ const WeeklyCalendar = () => {
 
   // Генерация списка покупок из недельного меню
   const handleGenerateShoppingList = () => {
-    generateShoppingListFromWeek()
-    // Здесь можно добавить уведомление о том, что список покупок обновлен
-    alert(t('menu.shoppingListGenerated'))
+    try {
+      // Получаем название созданного списка заранее
+      const weekPeriod = getWeekPeriod()
+      const listName = `Меню на неделю (${weekPeriod})`
+      
+      generateShoppingListFromWeek()
+      
+      // Показываем модальное окно с небольшой задержкой, чтобы список успел создаться
+      setTimeout(() => {
+        setGeneratedListName(listName)
+        setShowShoppingListModal(true)
+      }, 300)
+    } catch (error) {
+      console.error('Ошибка при создании списка покупок:', error)
+    }
+  }
+
+  const handleCloseShoppingListModal = () => {
+    setShowShoppingListModal(false)
+    setGeneratedListName('')
   }
 
   // Подготовка данных для фильтров
@@ -311,6 +333,13 @@ const WeeklyCalendar = () => {
       <WeekTemplateManager
         isOpen={isTemplateManagerOpen}
         onClose={() => setIsTemplateManagerOpen(false)}
+      />
+
+      {/* Модальное окно успешного создания списка покупок */}
+      <ShoppingListSuccessModal
+        isOpen={showShoppingListModal}
+        onClose={handleCloseShoppingListModal}
+        listName={generatedListName}
       />
     </div>
   )
