@@ -48,7 +48,14 @@ const RecipesPage = () => {
   const translatedRecipes = getTranslatedRecipes()
   const filteredRecipes = selectedCategory === 'all' 
     ? translatedRecipes 
-    : translatedRecipes.filter(recipe => recipe.category === selectedCategory)
+    : translatedRecipes.filter(recipe => {
+        // Если выбрана категория времени приема пищи (завтрак, обед, ужин)
+        if (['breakfast', 'lunch', 'dinner'].includes(selectedCategory)) {
+          return recipe.mealType === selectedCategory
+        }
+        // Иначе фильтруем по типу кухни
+        return recipe.category === selectedCategory
+      })
 
   const handleRecipeClick = (recipeId) => {
     navigate(`/recipes/${recipeId}`)

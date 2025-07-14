@@ -37,7 +37,7 @@ const HomePage = () => {
     if (isAuthenticated) {
       navigate('/menu')
     } else {
-      navigate('/auth')
+      navigate('/menu-auth')
     }
   }
 

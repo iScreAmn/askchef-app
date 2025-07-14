@@ -41,16 +41,32 @@ const Header = () => {
 
         <nav className={`nav ${isMobileMenuOpen ? 'nav--open' : 'nav--closed'}`}>
           <div className="nav-links">
-            {navItems.map((item) => (
-              <Link
-                key={item.key}
-                to={item.path}
-                className={`nav-link ${location.pathname === item.path ? 'nav-link--active' : ''}`}
-                onClick={closeMobileMenu}
-              >
-                {t(`navigation.${item.key}`)}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              // Для страницы меню проверяем аутентификацию
+              if (item.path === '/menu' && !isAuthenticated) {
+                return (
+                  <Link
+                    key={item.key}
+                    to="/menu-auth"
+                    className="nav-link"
+                    onClick={closeMobileMenu}
+                  >
+                    {t(`navigation.${item.key}`)}
+                  </Link>
+                )
+              }
+              
+              return (
+                <Link
+                  key={item.key}
+                  to={item.path}
+                  className={`nav-link ${location.pathname === item.path ? 'nav-link--active' : ''}`}
+                  onClick={closeMobileMenu}
+                >
+                  {t(`navigation.${item.key}`)}
+                </Link>
+              )
+            })}
           </div>
 
           <div className="user-section">

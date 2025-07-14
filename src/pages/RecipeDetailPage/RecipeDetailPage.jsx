@@ -7,6 +7,7 @@ import { IoBookmarkOutline, IoBookmark } from "react-icons/io5"
 import { mockRecipes } from '../../data/mockData'
 import useRecipeTranslations from '../../hooks/useRecipeTranslations'
 import useShoppingStore from '../../store/shoppingStore'
+import { useAuthStore } from '../../store/authStore'
 import Button from '../../components/ui/Button/Button'
 import './RecipeDetailPage.css'
 
@@ -20,6 +21,7 @@ const RecipeDetailPage = () => {
   const [isFavorite, setIsFavorite] = useState(false)
   
   const { toggleRecipeInList, isRecipeInList } = useShoppingStore()
+  const { isAuthenticated } = useAuthStore()
   const isInShoppingList = isRecipeInList(parseInt(id))
   
   // Определяем откуда пришел пользователь
@@ -62,6 +64,24 @@ const RecipeDetailPage = () => {
       dinner: t('recipes.dinner')
     }
     return categories[category] || category
+  }
+
+  // Обработчики кнопок с проверкой аутентификации
+  const handleAddToList = () => {
+    if (!isAuthenticated) {
+      navigate('/menu-auth')
+      return
+    }
+    toggleRecipeInList(parseInt(id))
+  }
+
+  const handleAddToMenu = () => {
+    if (!isAuthenticated) {
+      navigate('/menu-auth')
+      return
+    }
+    // TODO: Добавить функциональность добавления в меню
+    console.log('Add to menu functionality will be implemented')
   }
 
   if (!recipe) {
@@ -145,12 +165,16 @@ const RecipeDetailPage = () => {
               <Button 
                 variant="primary"
                 size="lg"
-                onClick={() => toggleRecipeInList(parseInt(id))}
+                onClick={handleAddToList}
               >
                 <LuShoppingCart /> 
                 {isInShoppingList ? t('recipes.inList') : t('recipes.addToList')}
               </Button>
-              <Button variant="secondary" size="lg">
+              <Button 
+                variant="secondary" 
+                size="lg"
+                onClick={handleAddToMenu}
+              >
                 {t('recipes.addToMenu')}
               </Button>
             </div>

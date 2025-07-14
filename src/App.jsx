@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Layout from './components/layout/Layout'
 import HomePage from './pages/HomePage/HomePage'
 import AuthPage from './pages/AuthPage/AuthPage'
+import MenuGuardPage from './pages/AuthPage/MenuGuardPage'
 import MenuPlanningPage from './pages/MenuPlanningPage/MenuPlanningPage'
 import RecipesPage from './pages/RecipesPage/RecipesPage'
 import RecipeDetailPage from './pages/RecipeDetailPage/RecipeDetailPage'
@@ -37,6 +38,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="auth" element={<AuthPage />} />
+        <Route path="menu-auth" element={<MenuGuardPage />} />
         <Route path="menu" element={<MenuPlanningPage />} />
         <Route path="recipes" element={<RecipesPage />} />
         <Route path="recipes/:id" element={<RecipeDetailPage />} />
