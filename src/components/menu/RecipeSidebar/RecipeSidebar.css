@@ -1,0 +1,254 @@
+/* Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Sidebar */
+.recipe-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  margin-top: 60px;
+  background: var(--background-primary);
+  border-left: 1px solid var(--border-light);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-sidebar.open {
+  transform: translateX(0);
+}
+
+/* Header */
+.sidebar-header {
+  padding: 2rem;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-secondary);
+}
+
+.sidebar-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.8rem;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  background: var(--surface-color);
+  color: var(--text-primary);
+}
+
+.close-button svg {
+  font-size: 2rem;
+}
+
+/* Filters */
+.sidebar-filters {
+  padding: 2rem;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  background: var(--bg-secondary);
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  font-size: 1.6rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1.2rem 1.2rem 1.2rem 4rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1.4rem;
+  background: var(--surface-color);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.filter-label {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.filter-select {
+  padding: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1.3rem;
+  background: var(--surface-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+/* Recipes list */
+.recipes-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.recipes-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.recipes-list::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.recipes-list::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 4px;
+}
+
+.recipes-list::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+.no-recipes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.no-recipes p {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+/* Instruction */
+.sidebar-instruction {
+  padding: 2rem;
+  border-top: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+}
+
+.instruction-text {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .recipe-sidebar {
+    width: 100vw;
+    left: 0;
+    right: 0;
+  }
+  
+  .sidebar-header {
+    padding: 1.6rem;
+  }
+  
+  .sidebar-title {
+    font-size: 1.8rem;
+  }
+  
+  .sidebar-filters {
+    padding: 1.6rem;
+    gap: 1.2rem;
+  }
+  
+  .search-input {
+    padding: 1rem 1rem 1rem 3.6rem;
+    font-size: 1.6rem;
+  }
+  
+  .search-icon {
+    left: 1rem;
+    font-size: 1.8rem;
+  }
+  
+  .filter-select {
+    padding: 1.2rem;
+    font-size: 1.6rem;
+  }
+  
+  .recipes-list {
+    padding: 1.6rem;
+    gap: 1.2rem;
+  }
+  
+  .sidebar-instruction {
+    padding: 1.6rem;
+  }
+  
+  .instruction-text {
+    font-size: 1.4rem;
+  }
+} 

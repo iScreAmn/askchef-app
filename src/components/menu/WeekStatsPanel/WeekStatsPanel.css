@@ -1,0 +1,339 @@
+.week-stats-panel {
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+/* Collapsed state */
+.week-stats-panel.collapsed {
+  padding: 0;
+}
+
+/* Удален stats-toggle-btn - теперь используется общая структура заголовка */
+
+.stats-summary {
+  font-weight: 600;
+}
+
+/* Expanded state */
+.week-stats-panel.expanded {
+  padding: 0;
+}
+
+.stats-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--input-border);
+}
+
+.stats-header.clickable {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.stats-header.clickable:hover {
+  /* background: var(--color-background); */
+}
+
+.stats-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.stats-title h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.stats-icon {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+.collapse-btn {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.collapse-btn:hover {
+  transform: scale(1.1);
+}
+
+.stats-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--color-background);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+}
+
+.stat-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.stat-icon-wrapper.recipes {
+  background: var(--color-primary);
+}
+
+.stat-icon-wrapper.time {
+  background: #10B981;
+}
+
+.stat-icon-wrapper.servings {
+  background: #F59E0B;
+}
+
+.stat-icon-wrapper.cost {
+  background: #EF4444;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+/* Completion Section */
+.completion-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.completion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.completion-label {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.completion-percentage {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+.completion-bar {
+  height: 8px;
+  background: var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.completion-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+  transition: width 0.3s ease;
+}
+
+.completion-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.missing-meals {
+  color: #EF4444;
+}
+
+/* Meal Distribution */
+.meal-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.meal-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.meal-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.meal-type-label {
+  min-width: 80px;
+  font-size: 1rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.meal-bar {
+  flex: 1;
+  height: 20px;
+  background: var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.meal-bar-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+  border-radius: 10px;
+}
+
+.meal-bar-fill.breakfast {
+  background: linear-gradient(90deg, #F59E0B, #D97706);
+}
+
+.meal-bar-fill.lunch {
+  background: linear-gradient(90deg, #10B981, #059669);
+}
+
+.meal-bar-fill.dinner {
+  background: linear-gradient(90deg, #8B5CF6, #7C3AED);
+}
+
+.meal-count {
+  min-width: 30px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Additional Info */
+.additional-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--color-background);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.info-icon {
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .stat-card {
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+  
+  .stat-icon-wrapper {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  
+  .stat-value {
+    font-size: 1.1rem;
+  }
+  
+  .stat-label {
+    font-size: 0.95rem;
+  }
+  
+  .stats-content {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+  
+  .meal-bar-item {
+    gap: 0.75rem;
+  }
+  
+  .meal-type-label {
+    min-width: 70px;
+    font-size: 0.95rem;
+  }
+  
+  .additional-info {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .completion-details {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+} 

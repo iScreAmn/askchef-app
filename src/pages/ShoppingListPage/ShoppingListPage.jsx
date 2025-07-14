@@ -1,6 +1,6 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { FiChevronDown, FiChevronUp, FiTrash2, FiX, FiPlus, FiCheck } from 'react-icons/fi'
 import { IoMdAddCircleOutline, IoMdCheckboxOutline } from "react-icons/io"
 import { MdModeEditOutline } from 'react-icons/md'
@@ -13,7 +13,9 @@ import './ShoppingListPage.css'
 const ShoppingListPage = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const location = useLocation()
   const { getTranslatedRecipes } = useRecipeTranslations()
+  const weeklyListRef = useRef(null)
   
   const {
     selectedRecipes,
@@ -21,6 +23,7 @@ const ShoppingListPage = () => {
     expandedCategories,
     checkedIngredients,
     customLists,
+    weeklyMenuShoppingList,
     clearAllSelections,
     selectAllRecipes,
     hasAnyActiveRecipes,
@@ -37,7 +40,10 @@ const ShoppingListPage = () => {
     removeItemFromCustomList,
     toggleCustomListItem,
     updateCustomListItem,
-    reorderCustomLists
+    reorderCustomLists,
+    clearWeeklyMenuShoppingList,
+    toggleWeeklyMenuShoppingItem,
+    removeWeeklyMenuShoppingItem
   } = useShoppingStore()
 
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
@@ -51,6 +57,14 @@ const ShoppingListPage = () => {
   const [editingItemText, setEditingItemText] = useState('')
   
   const recipes = getTranslatedRecipes()
+
+  useEffect(() => {
+    if (location.state?.scrollToWeeklyList && weeklyListRef.current) {
+      setTimeout(() => {
+        weeklyListRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
+    }
+  }, [location.state])
 
   // Определяем состояние кнопки "отметить все"/"снять все отметки"
   const hasActiveRecipes = hasAnyActiveRecipes()
@@ -277,17 +291,47 @@ const ShoppingListPage = () => {
     return categoryGroups
   }, [activeRecipes, recipes])
 
+  // Группировка списка из недельного меню по категориям
+  const groupedWeeklyMenuItems = useMemo(() => {
+    if (!weeklyMenuShoppingList) return {}
+    
+    const categoryGroups = {}
+    weeklyMenuShoppingList.items.forEach(item => {
+      const category = item.category || 'other'
+      if (!categoryGroups[category]) {
+        categoryGroups[category] = []
+      }
+      categoryGroups[category].push(item)
+    })
+
+    return categoryGroups
+  }, [weeklyMenuShoppingList])
+
   // Автоматически открываем все категории при появлении новых ингредиентов
   const categoryKeys = Object.keys(groupedIngredients)
+  const weeklyMenuCategoryKeys = Object.keys(groupedWeeklyMenuItems)
+  
   useEffect(() => {
+    const newExpandedCategories = {}
+    
+    // Открываем категории для обычных ингредиентов
     if (categoryKeys.length > 0) {
-      const newExpandedCategories = {}
       categoryKeys.forEach(category => {
         newExpandedCategories[category] = true
       })
+    }
+    
+    // Открываем категории для недельного меню
+    if (weeklyMenuCategoryKeys.length > 0) {
+      weeklyMenuCategoryKeys.forEach(category => {
+        newExpandedCategories[`weekly-${category}`] = true
+      })
+    }
+    
+    if (Object.keys(newExpandedCategories).length > 0) {
       setExpandedCategories(prev => ({ ...prev, ...newExpandedCategories }))
     }
-  }, [categoryKeys.length])
+  }, [categoryKeys.length, weeklyMenuCategoryKeys.length])
 
   // Функция для удаления ингредиента из списка
   const removeIngredient = (ingredientName) => {
@@ -493,6 +537,8 @@ const ShoppingListPage = () => {
                   </button>
                 </div>
                 
+
+                
                 <div className="custom-list-items">
                   {list.items.map(item => {
                     const isEditing = editingItem && editingItem.listId === list.id && editingItem.itemId === item.id
@@ -599,7 +645,70 @@ const ShoppingListPage = () => {
         )}
       </div>
 
-      {Object.keys(groupedIngredients).length === 0 && selectedRecipes.length === 0 && customLists.length === 0 && (
+      {/* Список покупок из недельного меню */}
+      {weeklyMenuShoppingList && Object.keys(groupedWeeklyMenuItems).length > 0 && (
+        <div className="shopping-list" ref={weeklyListRef}>
+          <div className="section-header">
+            <h2>{weeklyMenuShoppingList.name}</h2>
+            <Button
+              variant="ghost"
+              onClick={clearWeeklyMenuShoppingList}
+              title={t('shopping.clearWeeklyList')}
+            >
+              <FiTrash2 /> {t('shopping.clearList')}
+            </Button>
+          </div>
+          
+          {weeklyMenuShoppingList.description && (
+            <p className="shopping-list-description">{weeklyMenuShoppingList.description}</p>
+          )}
+          
+          {Object.entries(groupedWeeklyMenuItems).map(([category, items]) => (
+            <div key={category} className="ingredient-category">
+              <div 
+                className="category-header"
+                onClick={() => toggleCategory(`weekly-${category}`)}
+              >
+                <h3>{getCategoryName(category)}</h3>
+                {expandedCategories[`weekly-${category}`] ? <FiChevronUp /> : <FiChevronDown />}
+              </div>
+              
+              {expandedCategories[`weekly-${category}`] && (
+                <div className="ingredient-list">
+                  {items.map((item) => (
+                    <div key={item.id} className="ingredient-item">
+                      <label className={`ingredient-checkbox ${item.checked ? 'checked' : ''}`}>
+                        <input
+                          type="checkbox"
+                          checked={item.checked}
+                          onChange={() => toggleWeeklyMenuShoppingItem(item.id)}
+                        />
+                        <div className="ingredient-content">
+                          <span className="ingredient-text">
+                            {item.name} - {item.amount}
+                          </span>
+                          {item.fromRecipe && (
+                            <span className="ingredient-recipe">из "{item.fromRecipe}"</span>
+                          )}
+                        </div>
+                      </label>
+                      <button 
+                        className="remove-ingredient"
+                        onClick={() => removeWeeklyMenuShoppingItem(item.id)}
+                        title={t('shopping.removeIngredient')}
+                      >
+                        <FiX />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {Object.keys(groupedIngredients).length === 0 && selectedRecipes.length === 0 && customLists.length === 0 && !weeklyMenuShoppingList && (
         <div className="empty-shopping-list">
           <p>{t('shopping.emptyList')}</p>
         </div>

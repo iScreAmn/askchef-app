@@ -8,7 +8,7 @@
   --secondary-hover: #3bb5ad;
 
   /* Background colors */
-  --background-primary: #ffffff;
+  --background-primary: #ffffff;  
   --background-secondary: #f8f9fa;
   --background-tertiary: #e9ecef;
   --background-hover: #f5f5f5;
@@ -98,7 +98,7 @@
 
   /* Form elements */
   --input-background: #3a3a3a;
-  --input-border: #404040;
+  --input-border: #40404052;
   --input-focus: #ff6b35;
   --input-text: #ffffff;
   --input-placeholder: #808080;

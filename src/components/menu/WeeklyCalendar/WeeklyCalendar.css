@@ -1,0 +1,379 @@
+.weekly-calendar {
+  width: 100%;
+  min-width: 900px; /* Минимальная ширина для стабильности */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow: hidden; /* Контролируем переполнение */
+}
+
+.weekly-calendar-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-size: 1.6rem;
+  color: var(--text-secondary);
+}
+
+/* Заголовок с навигацией */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.calendar-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.action-button.primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.action-button.primary:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.action-button.secondary {
+  background: var(--color-background-secondary);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.action-button.secondary:hover {
+  background: var(--color-background);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.week-navigation {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.nav-button {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-primary);
+}
+
+.nav-button:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.nav-button svg {
+  font-size: 2rem;
+}
+
+.week-period {
+  text-align: center;
+  min-width: 250px;
+}
+
+.week-period h2 {
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.current-year {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  margin-top: 0.4rem;
+}
+
+/* Кнопка добавления рецептов */
+/* Обновленные стили для совместимости */
+.add-recipes-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-recipes-button:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.add-recipes-button:active {
+  transform: translateY(0);
+}
+
+.add-recipes-button svg {
+  font-size: 1.8rem;
+}
+
+/* Навигация по дням */
+.days-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+}
+
+.days-nav-button {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-primary);
+}
+
+.days-nav-button:hover:not(.disabled) {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+}
+
+.days-nav-button.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: var(--bg-secondary);
+}
+
+.days-nav-button svg {
+  font-size: 1.6rem;
+}
+
+.visible-days-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 200px;
+  text-align: center;
+}
+
+.days-range {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.carousel-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carousel-dot:hover {
+  background: var(--primary-color);
+  transform: scale(1.2);
+}
+
+.carousel-dot.active {
+  background: var(--primary-color);
+  transform: scale(1.3);
+}
+
+/* Карусель календаря */
+.calendar-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  padding: 1rem;
+  width: 100%;
+  min-height: 520px; /* Стабильная высота */
+}
+
+/* Сетка календаря - теперь только 3 колонки */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 1.6rem;
+  min-height: 500px;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .weekly-calendar {
+    min-width: 800px;
+  }
+  
+  .calendar-grid {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .weekly-calendar {
+    min-width: unset; /* Убираем минимальную ширину на мобильных */
+  }
+  
+  .calendar-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .week-navigation {
+    order: 1;
+  }
+  
+  .calendar-actions {
+    order: 2;
+    justify-content: center;
+  }
+  
+  .action-button {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .action-button span {
+    display: none;
+  }
+  
+  .week-navigation {
+    gap: 2rem;
+  }
+  
+  /* На мобильных показываем только 1 день */
+  .calendar-grid {
+    grid-template-columns: minmax(300px, 1fr);
+    gap: 1rem;
+    min-height: 400px;
+    width: 100%;
+  }
+  
+  .calendar-carousel {
+    min-height: 420px;
+  }
+  
+  .days-navigation {
+    gap: 1rem;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+  }
+  
+  .visible-days-info {
+    min-width: 120px;
+  }
+  
+  .days-range {
+    font-size: 1rem;
+  }
+  
+  .carousel-dots {
+    gap: 0.3rem;
+  }
+  
+  .carousel-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .days-nav-button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .days-nav-button svg {
+    font-size: 1.4rem;
+  }
+}
+
+/* Дополнительные мобильные стили для меньших экранов */
+@media (max-width: 480px) {
+  .calendar-grid {
+    grid-template-columns: minmax(280px, 1fr);
+  }
+  
+  .calendar-carousel {
+    min-height: 400px;
+  }
+  
+  .week-period {
+    min-width: 200px;
+  }
+  
+  .week-period h2 {
+    font-size: 2rem;
+  }
+  
+  .nav-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .nav-button svg {
+    font-size: 1.8rem;
+  }
+} 

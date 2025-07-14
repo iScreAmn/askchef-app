@@ -29,7 +29,8 @@ export const mockRecipes = [
       'Смешать с готовыми спагетти и подавать'
     ],
     tags: ['итальянская кухня', 'паста', 'мясо'],
-    category: 'dinner'
+    category: 'итальянская кухня',
+    mealType: 'dinner'
   },
   {
     id: 2,
@@ -57,7 +58,8 @@ export const mockRecipes = [
       'Перемешать и подавать'
     ],
     tags: ['салат', 'греческая кухня', 'вегетарианское'],
-    category: 'lunch'
+    category: 'греческая кухня',
+    mealType: 'lunch'
   },
   {
     id: 3,
@@ -84,7 +86,8 @@ export const mockRecipes = [
       'Подавать с зеленью'
     ],
     tags: ['завтрак', 'яйца', 'грибы'],
-    category: 'breakfast'
+    category: 'европейская кухня',
+    mealType: 'breakfast'
   },
   {
     id: 4,
@@ -108,7 +111,8 @@ export const mockRecipes = [
       'Обжаривайте сырники 1–2 минуты до появления золотистой корочки. Затем переверните их на другую сторону и также обжарьте до золотистого состояния.'
     ],
     tags: ['завтрак', 'творог', 'сырники'],
-    category: 'breakfast'
+    category: 'русская кухня',
+    mealType: 'breakfast'
   },
   {
     id: 5,
@@ -143,7 +147,8 @@ export const mockRecipes = [
       'Даем час супу настояться под крышкой и можно подавать на стол.'
     ],
     tags: ['суп', 'харчо', 'говядина', 'грузинская кухня'],
-    category: 'lunch'
+    category: 'грузинская кухня',
+    mealType: 'lunch'
   },
   {
     id: 6,
@@ -176,7 +181,8 @@ export const mockRecipes = [
       'Добавить зелень и чеснок.'
     ],
     tags: ['свинина', 'тушеное', 'сметана', 'мясо'],
-    category: 'dinner'
+    category: 'русская кухня',
+    mealType: 'dinner'
   }
 ]
 
@@ -214,22 +220,22 @@ export const mockShoppingLists = [
 
 export const mockWeeklyMenu = {
   monday: [
-    { ...mockRecipes[0], mealType: 'dinner' }
+    { ...mockRecipes[0] }
   ],
   tuesday: [
-    { ...mockRecipes[2], mealType: 'breakfast' },
-    { ...mockRecipes[1], mealType: 'lunch' }
+    { ...mockRecipes[2] },
+    { ...mockRecipes[1] }
   ],
   wednesday: [],
   thursday: [
-    { ...mockRecipes[1], mealType: 'lunch' }
+    { ...mockRecipes[1] }
   ],
   friday: [],
   saturday: [
-    { ...mockRecipes[0], mealType: 'dinner' }
+    { ...mockRecipes[0] }
   ],
   sunday: [
-    { ...mockRecipes[2], mealType: 'breakfast' }
+    { ...mockRecipes[2] }
   ]
 }
 
