@@ -1,0 +1,244 @@
+.custom-list-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  cursor: grab;
+}
+
+.custom-list-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.custom-list-card.dragging {
+  cursor: grabbing;
+  transform: rotate(2deg) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.custom-list-card.drag-over {
+  border-color: var(--primary-color);
+  background: var(--primary-color-light);
+}
+
+.custom-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.custom-list-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.remove-list-button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.remove-list-button:hover {
+  background: var(--danger-color-light);
+  color: var(--danger-color);
+}
+
+.custom-list-items {
+  margin-bottom: 12px;
+}
+
+.custom-list-item {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.custom-list-item:hover {
+  background: var(--hover-bg);
+}
+
+.custom-item-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-item-checkbox input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.custom-item-text {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.custom-item-checkbox.checked .custom-item-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+.item-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.item-content:hover .item-actions {
+  opacity: 1;
+}
+
+.edit-item-button,
+.remove-item-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.edit-item-button:hover:not(:disabled) {
+  background: var(--primary-color-light);
+  color: var(--primary-color);
+}
+
+.edit-item-button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.remove-item-button:hover {
+  background: var(--danger-color-light);
+  color: var(--danger-color);
+}
+
+.edit-item-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: var(--input-bg);
+  border-radius: 6px;
+  border: 1px solid var(--primary-color);
+}
+
+.edit-item-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.edit-item-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.save-edit-button,
+.cancel-edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.save-edit-button {
+  color: var(--success-color);
+}
+
+.save-edit-button:hover {
+  background: var(--success-color-light);
+}
+
+.cancel-edit-button {
+  color: var(--danger-color);
+}
+
+.cancel-edit-button:hover {
+  background: var(--danger-color-light);
+}
+
+.add-item-form {
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color);
+}
+
+.add-item-input-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.add-item-input {
+  flex: 1;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease;
+}
+
+.add-item-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.add-item-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.add-item-button {
+  background: var(--primary-color);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.add-item-button:hover:not(:disabled) {
+  background: var(--primary-color-dark);
+  transform: scale(1.05);
+}
+
+.add-item-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.add-item-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
