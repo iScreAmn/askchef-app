@@ -108,7 +108,6 @@ const HomePage = () => {
     if (!reduceMotion) {
       const heroBlob = q('.hero-blob')
       const featStroke = q('.section-title-stroke')
-      const parallaxCards = qa('.rd-card[data-speed]')
       const howSection = q('.how')
       const howTrack = q('.how-track')
       const howBar = q('.how-progress-bar')
@@ -125,14 +124,6 @@ const HomePage = () => {
           const rel = window.innerHeight - rect.top
           featStroke.style.transform = `translateX(${-rel * 0.08}px)`
         }
-        parallaxCards.forEach((card) => {
-          const speed = parseFloat(card.dataset.speed)
-          const rect = card.getBoundingClientRect()
-          const rel = window.innerHeight / 2 - (rect.top + rect.height / 2)
-          if (!card.matches(':hover')) {
-            card.style.transform = `translateY(${(rel * speed).toFixed(2)}px)`
-          }
-        })
         if (howSection && howTrack) {
           const sectRect = howSection.getBoundingClientRect()
           const scrollable = howSection.offsetHeight - window.innerHeight
@@ -246,13 +237,13 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="marquee">
-          <div className="marquee-track">
-            <span>{t('home.marquee')}</span>
-            <span>{t('home.marquee')}</span>
-          </div>
-        </div>
       </section>
+      <div className="marquee">
+        <div className="marquee-track">
+          <span>{t('home.marquee')}</span>
+          <span>{t('home.marquee')}</span>
+        </div>
+      </div>
 
       {/* FEATURES */}
       <section className="features">

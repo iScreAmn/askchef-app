@@ -221,7 +221,6 @@
 .home-redesign .marquee {
   position: relative;
   z-index: 3;
-  margin-top: auto;
   background: var(--orange-primary);
   overflow: hidden;
   padding: 16px 0;
@@ -443,15 +442,18 @@
 .home-redesign .ai-desc { color: rgba(255,255,255,0.75); max-width: 440px; }
 .home-redesign .ai-stats {
   display: flex;
-  gap: 48px;
   margin-top: 40px;
+  align-items: flex-start;
 }
 .home-redesign .stat-num {
+  display: inline-block;
+  min-width: 7ch;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(40px, 5vw, 72px);
   line-height: 1;
   color: var(--rd-white);
+  font-variant-numeric: tabular-nums;
 }
 .home-redesign .stat-label {
   margin-top: 8px;
