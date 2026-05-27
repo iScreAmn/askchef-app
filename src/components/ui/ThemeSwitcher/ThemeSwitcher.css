@@ -67,7 +67,7 @@
 
 .theme-toggle__thumb {
   position: absolute;
-  top: 2px;
+  top: 50%;
   left: 2px;
   width: 24px;
   height: 24px;
@@ -79,6 +79,7 @@
   transition: transform 0.3s ease, background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   color: var(--text-secondary);
+  transform: translateY(-50%);
 }
 
 .theme-toggle--dark .theme-toggle__thumb {
