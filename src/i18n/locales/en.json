@@ -190,7 +190,40 @@
     "subtitle": "Your personal culinary assistant for meal planning and recipe management",
     "getStarted": "Get Started",
     "viewRecipes": "View Recipes",
+    "learnMore": "Learn More",
+    "est": "EST. 2024",
+    "subtitleLine1": "A next-generation meal planner",
+    "subtitleLine2": "with a smart recipe base and AI assistant.",
+    "marquee": "MENU PLANNING · RECIPE BASE · AI ASSISTANT · SHOPPING LISTS · ",
     "featuresTitle": "Features",
+    "featuresStroke": "FEATURES",
+    "howTitle": "How it works",
+    "steps": {
+      "one": {
+        "title": "Tell us about yourself",
+        "description": "Goals, preferences, allergies and budget — AskChef factors everything in so the menu is truly yours."
+      },
+      "two": {
+        "title": "Get your plan",
+        "description": "A ready weekly menu with recipes and nutrition breakdown appears in seconds."
+      },
+      "three": {
+        "title": "Cook and enjoy",
+        "description": "The shopping list builds itself. All that's left is to buy the groceries and cook."
+      }
+    },
+    "ai": {
+      "titleLine1": "AI that knows",
+      "titleLine2": "what you love to eat",
+      "description": "The more you cook with AskChef, the sharper the recommendations get. Personalization without the effort.",
+      "statRecipes": "Recipes",
+      "statUsers": "Users",
+      "cardTitle": "Pasta with tomatoes and basil",
+      "cardMeta": "Ready in 20 min · 540 kcal · tailored to your profile.",
+      "tagVegan": "Vegan",
+      "tagFast": "Fast",
+      "tagSeasonal": "Seasonal"
+    },
     "features": {
       "menuPlanning": {
         "title": "Weekly Menu Planning",
